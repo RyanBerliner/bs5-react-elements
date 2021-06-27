@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="React elements that use, not replace, Bootstrap 5 javascript.">
+    <title>Bootstrap 5 React Elements | Get Started</title>
+    <style>
+      body {
+        max-width: 1100px;
+        margin: 20px auto;
+        padding: 0 30px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      header {
+        -webkit-margin-end: 33px;
+                margin-inline-end: 33px;
+        -ms-flex-preferred-size: 300px;
+            flex-basis: 300px;
+        -webkit-box-flex: 0;
+            -ms-flex-positive: 0;
+                flex-grow: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      header nav h2 {
+        font-size: 1.25rem;
+      }
+
+      main {
+        -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+                flex-grow: 1;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid black;
+        padding: 2px 4px;
+      }
+
+      .skip {
+        position: absolute;
+        background-color: white;
+        border: 1px solid black;
+        padding: .2em .5em;
+      }
+
+      .skip:not(:focus) {
+        opacity: 0;
+        height: 1px;
+        width: 1px;
+      }
+
+      .demo-iframe {
+        width: 100%;
+        border: 1px solid black;
+        height: 8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#content" class="skip">Skip to content</a>
+      <h1>Bootstrap 5 React Elements</h1>
+      <a href="https://github.com/RyanBerliner/bs5-react-elements">View on GitHub</a>
+      <nav>
+        <h2>Introduction</h2>
+        <ul>
+          <li><a href="/bs5-react-elements/">Getting Started</a></li>
+          <li><a href="/bs5-react-elements/installation-options/">Installation Options</a></li>
+          <li><a href="/bs5-react-elements/event-props/">Event props</a></li>
+          <li><a href="/bs5-react-elements/component-prop/">The <code>component</code> prop</a></li>
+          <li><a href="/bs5-react-elements/config-prop/">The <code>config</code> prop</a></li>
+        </ul>
+        <h2>All Elements</h2>
+        <ul>
+          
+            <li>
+              <a href="/bs5-react-elements/element/modal/">
+                Modal
+              </a>
+            </li>
+          
+            <li>
+              <a href="/bs5-react-elements/element/tooltip/">
+                Tooltip
+              </a>
+            </li>
+          
+          <li><a href="/bs5-react-elements/other-elements/">Other elements?</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="content">
+      
+<h1>Getting Started</h1>
+
+<p>React elements that <em>use, not replace,</em> Bootstrap 5 javascript. They expose Bootstrap's existing events and api in a convenient, predictable, and flexible way to your React project.</p>
+
+<p>
+<strong>This is not a React re-write of Bootstrap javascript.</strong> Because of this, there isn't much to learn! If you use Bootstrap, you know almost everything there is to know about this library.
+When it comes to customizing your Bootstrap components look or behavior, refer to the <a href="https://getbootstrap.com/">official Bootstrap documentation.</a>
+</p>
+
+<h2>Installing</h2>
+
+<p>Use your package manager to install into your React project.</p>
+
+<pre><code>npm i bs5-react-elements</code></pre>
+
+<p><strong>Important!</strong> Bootstrap, and any of its dependencies are NOT bundled with this library. You will need to install Bootstrap and its dependencies yourself.</p>
+
+<p>Not using a bundler? See the other <a href="/bs5-react-elements/installation-options/">installation options</a> to begin using this library.</p>
+
+<h2>Example Usage</h2>
+
+<p>This is a tooltip that will listen for Bootstrap <code>shown.bs.tooltip</code> event and console log a message.</p>
+
+<pre><code>import React, {useCallback} from &quot;react&quot;;
+import {Tooltip} from &quot;bs5-react-elements&quot;;
+
+function ExampleUsage() {
+  const onShownHandler = useCallback(() => {
+    console.log(&quot;The tooltip has been shown.&quot;);
+  }, []);
+
+  return &lt;Tooltip
+    title=&quot;Lorem ipsum dolor.&quot;
+    data-bs-toggle=&quot;tooltip&quot;
+    onShown={onShownHandler}
+  &gt;
+    Lorem ipsum
+  &lt;/Tooltip&gt;
+}</code>
+
+</pre>
+
+<iframe src="/bs5-react-elements/demo/" class="demo-iframe" title="Bootstrap tooltip demo"></iframe>
+
+<p>This is just an example, for more information, be sure to browse all the elements offered in this library for supported props, or learn about common props like <a href="/bs5-react-elements/event-props/">event props</a>, <a href="/bs5-react-elements/component-prop/">the <code>component</code> prop</a>, or , <a href="/bs5-react-elements/config-prop/">the <code>config</code> prop.</a></p>
+    </main>
+  </body>
+</html>

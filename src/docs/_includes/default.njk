@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% if renderData.description %}{{ renderData.description | safe }}{% elif description %}{{ description | safe }}{% endif %}">
+    <title>{% if renderData.title %}{{ renderData.title | safe }}{% elif title %}Bootstrap 5 React Elements | {{ title | safe }}{% endif %}</title>
+    <style>
+      body {
+        max-width: 1100px;
+        margin: 20px auto;
+        padding: 0 30px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      header {
+        -webkit-margin-end: 33px;
+                margin-inline-end: 33px;
+        -ms-flex-preferred-size: 300px;
+            flex-basis: 300px;
+        -webkit-box-flex: 0;
+            -ms-flex-positive: 0;
+                flex-grow: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      header nav h2 {
+        font-size: 1.25rem;
+      }
+
+      main {
+        -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+                flex-grow: 1;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid black;
+        padding: 2px 4px;
+      }
+
+      .skip {
+        position: absolute;
+        background-color: white;
+        border: 1px solid black;
+        padding: .2em .5em;
+      }
+
+      .skip:not(:focus) {
+        opacity: 0;
+        height: 1px;
+        width: 1px;
+      }
+
+      .demo-iframe {
+        width: 100%;
+        border: 1px solid black;
+        height: 8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#content" class="skip">Skip to content</a>
+      <h1>Bootstrap 5 React Elements</h1>
+      <a href="https://github.com/RyanBerliner/bs5-react-elements">View on GitHub</a>
+      <nav>
+        <h2>Introduction</h2>
+        <ul>
+          <li><a href="{{ '/' | url }}">Getting Started</a></li>
+          <li><a href="{{ '/installation-options/' | url }}">Installation Options</a></li>
+          <li><a href="{{ '/event-props/' | url }}">Event props</a></li>
+          <li><a href="{{ '/component-prop/' | url }}">The <code>component</code> prop</a></li>
+          <li><a href="{{ '/config-prop/' | url }}">The <code>config</code> prop</a></li>
+        </ul>
+        <h2>All Elements</h2>
+        <ul>
+          {% for file, element in elements %}
+            <li>
+              <a href="{{ '/element/' | url }}{{ element.displayName | slug }}/">
+                {{ element.displayName }}
+              </a>
+            </li>
+          {% endfor %}
+          <li><a href="{{ '/other-elements/' | url }}">Other elements?</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="content">
+      {{ content | safe }}
+    </main>
+  </body>
+</html>

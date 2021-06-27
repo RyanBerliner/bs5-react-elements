@@ -1,0 +1,49 @@
+---
+title: Tooltip Demo
+description: React element bootstrap tooltip demo.
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 5 React Elements | Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="p-5 text-center" id="example-tooltip"></div>
+
+    <!-- include react and react dom -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+
+    <!-- include include bootstrap js (this is the bundle version, which includes all its peer dependencies) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- include the umd build of bs5 react elements (could also be from cdn) -->
+    <script src="../assets/dist/bs5-react-elements.min.js"></script>
+
+    <script>
+      'use strict';
+
+      function ExampleUsage(props) {
+        const onShownHandler = React.useCallback(function() {
+          console.log("The tooltip has been shown.");
+        }, []);
+
+        return React.createElement(
+          BS5ReactElements.Tooltip,
+          {'data-bs-toggle': 'tooltip', title: 'Lorem ispum dolor.', onShown: onShownHandler},
+          'Lorem ipsum'
+        );
+      }
+
+      ReactDOM.render(
+        React.createElement(ExampleUsage),
+        document.querySelector('#example-tooltip')
+      );
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,62 @@
+{
+  "name": "bs5-react-elements",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/bs5-react-elements.js",
+  "module": "dist/bs5-react-elements.esm.js",
+  "scripts": {
+    "site-data": "react-docgen ./src/lib/*.jsx -o ./src/docs/_data/elements.json --pretty",
+    "build-site": "eleventy --input=src/docs --output=docs",
+    "watch-site": "npm run build-site -- --serve",
+    "test": "jest --coverage",
+    "lint": "eslint . --ext .js --ext .jsx",
+    "build": "rollup -c"
+  },
+  "files": [
+    "dist",
+    "src/lib",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "react",
+    "bootstrap"
+  ],
+  "author": "Ryan Berliner",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RyanBerliner/bs5-react-elements"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "@babel/core": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
+    "@popperjs/core": "^2.9.2",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@testing-library/react": "^11.2.7",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "bootstrap": "^5.0.1",
+    "eslint": "^7.28.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.24.0",
+    "jest": "^27.0.4",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-docgen": "^5.4.0",
+    "react-dom": "^17.0.2",
+    "rollup": "^2.52.3",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "peerDependencies": {
+    "bootstrap": "^5.0.0",
+    "react": "^17.0.0"
+  }
+}

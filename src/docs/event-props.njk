@@ -1,0 +1,47 @@
+---
+layout: default.njk
+title: Event Props
+description: Bootstrap 5 events are mapped to React element props.
+---
+
+<h1>Event Props</h1>
+
+<p>Bootstrap components trigger events when they change. For instance a modal will trigger a "shown" or "hidden" event when it is shown or hidden.</p>
+
+<p>This library maps these events (which fire on the <em>actual</em> dom elements) into props so you don't need to add event listeners on React refs yourself.</p>
+
+<h2>Example Usage</h2>
+
+<p>Let's say you have a modal, and the content of that modal needs to be fetched from a remote source. You've decided you want to wait until the user opens the modal to make the network request, so you can listen to the modals "show" event and make the request at that point.</p>
+
+<pre><code>import React, {useCallback} from &quot;react&quot;;
+import {Modal} from &quot;bs5-react-elements&quot;;
+
+function ExampleUsage() {
+  const fetchData = useCallback(() => {
+    // code to fetch data
+  }, []);
+
+  return &lt;&gt;
+    &lt;button data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#example-usage&quot;&gt;
+      Launch
+    &lt;/button&gt;
+    &lt;Modal
+      className=&quot;modal fade&quot;
+      id=&quot;example-usage&quot;
+      tabIndex=&quot;-1&quot;
+      aria-hidden=&quot;true&quot;
+      onShow={fetchData}
+    &gt;
+      &lt;div className=&quot;modal-dialog&quot;&gt;
+        &lt;div className=&quot;modal-content&quot;&gt;
+          {/* display data here */}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/Modal&gt;
+  &lt;/&gt;;
+}</code></pre>
+
+<p><strong>Important!</strong> You'll notice the use of <code>useCallback</code>. Every time that an event prop is changed, the event listener needs to be removed and re-added to the underlying dom element. So, make sure the reference to your event handler only changes when you genuinely intend it to change. If you can, you could define your event handler outside the scope of the component to maintain a static reference and avoid using <code>useCallback</code>. It all depends on your use case.</p>
+
+<p>Each Bootstrap component has different events, so be sure to check out the documentation of each element.</p>

@@ -1,0 +1,13 @@
+{
+  "presets": [
+    "@babel/preset-react",
+    "@babel/preset-env"
+  ],
+  "plugins": [
+    [
+      "transform-react-remove-prop-types", {
+        "removeImport": true
+      }
+    ]
+  ]
+}

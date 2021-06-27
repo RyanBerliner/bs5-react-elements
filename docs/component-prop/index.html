@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bootstrap 5 component ref is mapped to a React element prop.">
+    <title>Bootstrap 5 React Elements | Component Prop</title>
+    <style>
+      body {
+        max-width: 1100px;
+        margin: 20px auto;
+        padding: 0 30px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      header {
+        -webkit-margin-end: 33px;
+                margin-inline-end: 33px;
+        -ms-flex-preferred-size: 300px;
+            flex-basis: 300px;
+        -webkit-box-flex: 0;
+            -ms-flex-positive: 0;
+                flex-grow: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      header nav h2 {
+        font-size: 1.25rem;
+      }
+
+      main {
+        -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+                flex-grow: 1;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid black;
+        padding: 2px 4px;
+      }
+
+      .skip {
+        position: absolute;
+        background-color: white;
+        border: 1px solid black;
+        padding: .2em .5em;
+      }
+
+      .skip:not(:focus) {
+        opacity: 0;
+        height: 1px;
+        width: 1px;
+      }
+
+      .demo-iframe {
+        width: 100%;
+        border: 1px solid black;
+        height: 8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#content" class="skip">Skip to content</a>
+      <h1>Bootstrap 5 React Elements</h1>
+      <a href="https://github.com/RyanBerliner/bs5-react-elements">View on GitHub</a>
+      <nav>
+        <h2>Introduction</h2>
+        <ul>
+          <li><a href="/bs5-react-elements/">Getting Started</a></li>
+          <li><a href="/bs5-react-elements/installation-options/">Installation Options</a></li>
+          <li><a href="/bs5-react-elements/event-props/">Event props</a></li>
+          <li><a href="/bs5-react-elements/component-prop/">The <code>component</code> prop</a></li>
+          <li><a href="/bs5-react-elements/config-prop/">The <code>config</code> prop</a></li>
+        </ul>
+        <h2>All Elements</h2>
+        <ul>
+          
+            <li>
+              <a href="/bs5-react-elements/element/modal/">
+                Modal
+              </a>
+            </li>
+          
+            <li>
+              <a href="/bs5-react-elements/element/tooltip/">
+                Tooltip
+              </a>
+            </li>
+          
+          <li><a href="/bs5-react-elements/other-elements/">Other elements?</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="content">
+      
+<h1>Component Prop</h1>
+
+<p>Each Bootstrap component has a bunch of useful methods attached to itself. For instance a modal object provides methods to "show" or "hide" itself. This library provides an easy way to gain access to the component object so that you can do as you please with it.</p>
+
+<h2>Example Usage</h2>
+
+<p>This modal will open automatically after 2 seconds.</p>
+
+<pre><code>import React, {useEffect, useRef} from &quot;react&quot;;
+import {Modal} from &quot;bs5-react-elements&quot;;
+
+function ExampleUsage() {
+  const modal = useRef();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => modal.current.show(), 2000);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return &lt;&gt;
+    &lt;Modal
+      className=&quot;modal fade&quot;
+      id=&quot;example-usage&quot;
+      tabIndex=&quot;-1&quot;
+      aria-hidden=&quot;true&quot;
+      component={modal}
+    &gt;
+      &lt;div className=&quot;modal-dialog&quot;&gt;
+        &lt;div className=&quot;modal-content&quot;&gt;
+          Lorem ipsum dolor.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/Modal&gt;
+  &lt;/&gt;;
+}</code></pre>
+
+<p>Always refer to the <a href="https://getbootstrap.com/">official Bootstrap documentation</a> to find what methods are available for a component.</p>
+    </main>
+  </body>
+</html>

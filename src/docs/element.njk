@@ -1,0 +1,55 @@
+---
+pagination:
+  data: elements
+  resolve: values
+  size: 1
+  alias: element
+permalink: "element/{{ element.displayName | slug }}/"
+layout: default.njk
+renderData:
+  title: Bootstrap 5 React Elements | {{ element.displayName }}
+  description: Details - {{ element.description }}
+---
+
+<h1>{{ element.displayName }}</h1>
+
+<p>{{ element.description | safe }}</p>
+
+<h2>Example Usage</h2>
+
+{% include element.displayName | exampleusage %}
+
+<h2>Props</h2>
+
+<table style="width:100%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default Value</th>
+      <th>Required</th>
+    </tr>
+    </head>
+  <tbody>
+    {% for name, details in element.props %}
+    <tr>
+      <td>{{ name }}</td>
+      <td>{{ details.description }}</td>
+      <td>
+        {% if details.type.name == 'union' %}
+        {% if details.type.value[0].name == 'func' and details.type.value[1].value.current.name == 'any' %}
+        React ref
+        {% else %}
+        union (see source code)
+        {% endif %}
+        {% else %}
+        {{ details.type.name }}
+        {% endif %}
+      </td>
+      <td>{{ details.defaultValue.value }}</td>
+      <td>{{ details.required }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

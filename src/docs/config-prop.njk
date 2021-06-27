@@ -1,0 +1,30 @@
+---
+layout: default.njk
+title: Config Prop
+description: Bootstrap 5 component configuration is mapped to React element props.
+---
+
+<h1>Config Prop</h1>
+
+<p>Configuring components can be accomplished through data attributes as you typically do on Bootstrap components, or through a configuration object like you might if you manually instantiate a Bootstrap component.</p>
+
+<p>You can conveniently pass this configuration as a prop if you would like.</p>
+
+<h2>Example Usage</h2>
+
+<p>This tooltip is configured to show on the left.</p>
+
+<pre><code>import React from &quot;react&quot;;
+import {Tooltip} from &quot;bs5-react-elements&quot;;
+
+function ExampleUsage() {
+  return &lt;Tooltips
+    title=&quot;Lorem ipsum dolor.&quot;
+    data-bs-toggle=&quot;tooltip&quot;
+    config={{'{{placement:"left"}}'}}
+  &gt;
+    Lorem ipsum
+  &lt;/Tooltip&gt;
+}</code></pre>
+
+<p>Always refer to the <a href="https://getbootstrap.com/">official Bootstrap documentation</a> to find how components can be configured. They refer to these as "options" in their documentation.</p>

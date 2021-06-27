@@ -1,0 +1,65 @@
+---
+layout: default.njk
+title: Installation Options
+description: Use this libary in your bundled projects, or get going quickly in others using script tags.
+---
+
+<h1>Installation Options</h1>
+
+<p>Use this libary in your bundled projects, or get going quickly in others using script tags.</p>
+
+<h2>Option 1: Using your package manager and bundler</h2>
+
+<p>Most often you'll be using a bundler for your React project, and installing with your package manager will be the easiest way to get started.</p>
+
+<pre><code>npm i bs5-react-elements</code></pre>
+
+<p><strong>Important!</strong> Bootstrap, and any of its dependencies are NOT bundled with this library. You will need to install Bootstrap and its dependencies yourself.</p>
+
+<h3>Example Usage</h3>
+
+<pre><code>import React, {useCallback} from &quot;react&quot;;
+import {Tooltip} from &quot;bs5-react-elements&quot;;
+
+function ExampleUsage() {
+  const onShownHandler = useCallback(() => {
+    console.log(&quot;The tooltip has been shown.&quot;);
+  }, []);
+
+  return &lt;Tooltip
+    title=&quot;Lorem ipsum dolor.&quot;
+    data-bs-toggle=&quot;tooltip&quot;
+    onShown={onShownHandler}
+  &gt;
+    Lorem ipsum
+  &lt;/Tooltip&gt;
+}</code></pre>
+
+<h2>Option 2: Using script tags</h2>
+
+<p>This library can also be used with script tags on your webpage. Reference the code either locally, or from a cdn. You'll need to ensure React and Bootstrap (alongside their dependencies) are also included on your webpage.</p>
+
+<h3>Example Usage</h3>
+
+<pre><code>&lt;!--
+    DON'T FORGET TO INCLUDE SCRIPT TAGS for react, bootstrap
+    add script tag for this library's bundle from your prefered source (not esm file)
+
+    Refer to the demo's source for an example: https://ryanberliner.com{{ '/demo/' | url }}
+--&gt;
+
+&lt;script&gt;
+  'use strict';
+
+  function ExampleUsage(props) {
+    const onShownHandler = React.useCallback(function() {
+      console.log(&quot;The tooltip has been shown.&quot;);
+    }, []);
+
+    return React.createElement(
+      BS5ReactElements.Tooltip,
+      {'data-bs-toggle': 'tooltip', title: 'Lorem ispum dolor.', onShown: onShownHandler},
+      'Lorem ipsum'
+    );
+  }
+&lt;/script&gt;</code></pre>

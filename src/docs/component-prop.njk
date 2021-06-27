@@ -1,0 +1,43 @@
+---
+layout: default.njk
+title: Component Prop
+description: Bootstrap 5 component ref is mapped to a React element prop.
+---
+
+<h1>Component Prop</h1>
+
+<p>Each Bootstrap component has a bunch of useful methods attached to itself. For instance a modal object provides methods to "show" or "hide" itself. This library provides an easy way to gain access to the component object so that you can do as you please with it.</p>
+
+<h2>Example Usage</h2>
+
+<p>This modal will open automatically after 2 seconds.</p>
+
+<pre><code>import React, {useEffect, useRef} from &quot;react&quot;;
+import {Modal} from &quot;bs5-react-elements&quot;;
+
+function ExampleUsage() {
+  const modal = useRef();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => modal.current.show(), 2000);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return &lt;&gt;
+    &lt;Modal
+      className=&quot;modal fade&quot;
+      id=&quot;example-usage&quot;
+      tabIndex=&quot;-1&quot;
+      aria-hidden=&quot;true&quot;
+      component={modal}
+    &gt;
+      &lt;div className=&quot;modal-dialog&quot;&gt;
+        &lt;div className=&quot;modal-content&quot;&gt;
+          Lorem ipsum dolor.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/Modal&gt;
+  &lt;/&gt;;
+}</code></pre>
+
+<p>Always refer to the <a href="https://getbootstrap.com/">official Bootstrap documentation</a> to find what methods are available for a component.</p>

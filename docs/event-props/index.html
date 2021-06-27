@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bootstrap 5 events are mapped to React element props.">
+    <title>Bootstrap 5 React Elements | Event Props</title>
+    <style>
+      body {
+        max-width: 1100px;
+        margin: 20px auto;
+        padding: 0 30px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      header {
+        -webkit-margin-end: 33px;
+                margin-inline-end: 33px;
+        -ms-flex-preferred-size: 300px;
+            flex-basis: 300px;
+        -webkit-box-flex: 0;
+            -ms-flex-positive: 0;
+                flex-grow: 0;
+        -ms-flex-negative: 0;
+            flex-shrink: 0;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      header nav h2 {
+        font-size: 1.25rem;
+      }
+
+      main {
+        -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+                flex-grow: 1;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid black;
+        padding: 2px 4px;
+      }
+
+      .skip {
+        position: absolute;
+        background-color: white;
+        border: 1px solid black;
+        padding: .2em .5em;
+      }
+
+      .skip:not(:focus) {
+        opacity: 0;
+        height: 1px;
+        width: 1px;
+      }
+
+      .demo-iframe {
+        width: 100%;
+        border: 1px solid black;
+        height: 8rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="#content" class="skip">Skip to content</a>
+      <h1>Bootstrap 5 React Elements</h1>
+      <a href="https://github.com/RyanBerliner/bs5-react-elements">View on GitHub</a>
+      <nav>
+        <h2>Introduction</h2>
+        <ul>
+          <li><a href="/bs5-react-elements/">Getting Started</a></li>
+          <li><a href="/bs5-react-elements/installation-options/">Installation Options</a></li>
+          <li><a href="/bs5-react-elements/event-props/">Event props</a></li>
+          <li><a href="/bs5-react-elements/component-prop/">The <code>component</code> prop</a></li>
+          <li><a href="/bs5-react-elements/config-prop/">The <code>config</code> prop</a></li>
+        </ul>
+        <h2>All Elements</h2>
+        <ul>
+          
+            <li>
+              <a href="/bs5-react-elements/element/modal/">
+                Modal
+              </a>
+            </li>
+          
+            <li>
+              <a href="/bs5-react-elements/element/tooltip/">
+                Tooltip
+              </a>
+            </li>
+          
+          <li><a href="/bs5-react-elements/other-elements/">Other elements?</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="content">
+      
+<h1>Event Props</h1>
+
+<p>Bootstrap components trigger events when they change. For instance a modal will trigger a "shown" or "hidden" event when it is shown or hidden.</p>
+
+<p>This library maps these events (which fire on the <em>actual</em> dom elements) into props so you don't need to add event listeners on React refs yourself.</p>
+
+<h2>Example Usage</h2>
+
+<p>Let's say you have a modal, and the content of that modal needs to be fetched from a remote source. You've decided you want to wait until the user opens the modal to make the network request, so you can listen to the modals "show" event and make the request at that point.</p>
+
+<pre><code>import React, {useCallback} from &quot;react&quot;;
+import {Modal} from &quot;bs5-react-elements&quot;;
+
+function ExampleUsage() {
+  const fetchData = useCallback(() => {
+    // code to fetch data
+  }, []);
+
+  return &lt;&gt;
+    &lt;button data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#example-usage&quot;&gt;
+      Launch
+    &lt;/button&gt;
+    &lt;Modal
+      className=&quot;modal fade&quot;
+      id=&quot;example-usage&quot;
+      tabIndex=&quot;-1&quot;
+      aria-hidden=&quot;true&quot;
+      onShow={fetchData}
+    &gt;
+      &lt;div className=&quot;modal-dialog&quot;&gt;
+        &lt;div className=&quot;modal-content&quot;&gt;
+          {/* display data here */}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/Modal&gt;
+  &lt;/&gt;;
+}</code></pre>
+
+<p><strong>Important!</strong> You'll notice the use of <code>useCallback</code>. Every time that an event prop is changed, the event listener needs to be removed and re-added to the underlying dom element. So, make sure the reference to your event handler only changes when you genuinely intend it to change. If you can, you could define your event handler outside the scope of the component to maintain a static reference and avoid using <code>useCallback</code>. It all depends on your use case.</p>
+
+<p>Each Bootstrap component has different events, so be sure to check out the documentation of each element.</p>
+    </main>
+  </body>
+</html>
