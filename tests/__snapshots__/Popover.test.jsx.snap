@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`markup minimum markup renders as expected 1`] = `"<span data-bs-original-title=\\"\\" title=\\"\\"></span>"`;
+
+exports[`markup places children in correct element 1`] = `"<span data-bs-original-title=\\"\\" title=\\"\\">child</span>"`;
+
+exports[`markup support additional attributes, place them correctly 1`] = `"<span data-lorem=\\"ipsum\\" data-bs-original-title=\\"\\" title=\\"\\"></span>"`;
+
+exports[`markup support custom tagname with components supporting ref forwards 1`] = `"<a data-bs-original-title=\\"\\" title=\\"\\">child</a>"`;
+
+exports[`markup supports custom tagname by string 1`] = `"<button data-bs-original-title=\\"\\" title=\\"\\"></button>"`;
