@@ -5,6 +5,10 @@ describe('package index', () => {
     expect(BS5ReactElements.Modal).toBeTruthy();
   });
 
+  test('exports a named popover', () => {
+    expect(BS5ReactElements.Popover).toBeTruthy();
+  });
+
   test('exports a named tooltip', () => {
     expect(BS5ReactElements.Tooltip).toBeTruthy();
   });
