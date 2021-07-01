@@ -1,5 +1,4 @@
-import React, {useRef, useMemo, useCallback} from 'react';
-import {unmountComponentAtNode} from 'react-dom';
+import React, {useRef, useMemo} from 'react';
 import PropTypes from 'prop-types';
 import {Alert} from 'bootstrap';
 import {useBootstrap} from './hooks.js';
@@ -10,27 +9,18 @@ import {useBootstrap} from './hooks.js';
 function AlertComponent({
   onClosed,
   onClose,
-  container,
   component,
   children,
   ...props
 }) {
   const componentElement = useRef();
 
-  const _onClosed = useCallback((event) => {
-    unmountComponentAtNode(container.current);
-
-    if (onClosed) {
-      onClosed(event);
-    }
-  }, [onClosed]);
-
   const events = useMemo(() => {
     return new Map([
-      ['closed.bs.alert', _onClosed],
+      ['closed.bs.alert', onClosed],
       ['close.bs.alert', onClose],
     ]);
-  }, [_onClosed, onClose]);
+  }, [onClosed, onClose]);
 
   useBootstrap(Alert, undefined, component, componentElement, events);
 
@@ -50,13 +40,6 @@ AlertComponent.propTypes = {
    * Handler for the close.bs.alert event
    */
   onClose: PropTypes.func,
-  /**
-   * React ref refering to the container the element is wrapped in
-   */
-  container: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({current: PropTypes.any}),
-  ]).isRequired(),
   /**
    * React ref that will be assigned the component instance
    */

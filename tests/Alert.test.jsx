@@ -1,18 +1,15 @@
 import React, {useEffect, useRef} from 'react';
 import {Alert} from '../src/lib/Alert';
-import {render, screen, fireEvent} from '@testing-library/react';
+import {render, fireEvent} from '@testing-library/react';
 
 /**
  * A boilerplate alert.
  */
 function TestAlert(props) {
-  const container = useRef();
-
-  return <div ref={container}>
+  return <div>
     <Alert
       role="alert"
       className="alert alert-primary alert-dismissible fade show"
-      container={container}
       {...props}
     >
       Test alert
