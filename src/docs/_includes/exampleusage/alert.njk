@@ -1,0 +1,22 @@
+<pre><code>import React from &quot;react&quot;;
+import {Alert} from &quot;bs5-react-elements&quot;;
+
+function ExampleUsage() {
+  return &lt;div&gt;
+    &lt;Alert
+      role=&quot;alert&quot;
+      className=&quot;alert alert-primary alert-dismissible fade show&quot;
+    &gt;
+      Lorem ipsum dolor.
+      &lt;button
+        type=&quot;button&quot;
+        className=&quot;btn-close&quot;
+        data-bs-dismiss=&quot;alert&quot;
+        aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
+    &lt;/Alert&gt;
+  &lt;/div&gt;;
+}</code></pre>
+
+<p><strong>Important!</strong> If you are making your alert dismissable—which, otherwise you have no need to use this element—than <strong>you must wrap this element in another html element (notice the div in the example).</strong></p>
+
+<p>Otherwise, if you don't do this, when Bootstrap deletes the real dom element React would not be able to find the component! This is admittedly a workaround, and it's recommened you supply an <code>onClosed</code> callback that completely and officially unmounts the component when the alert is dismissed.<p>
