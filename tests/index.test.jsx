@@ -1,6 +1,10 @@
 import * as BS5ReactElements from '../src/lib/index';
 
 describe('package index', () => {
+  test('exports a named alert', () => {
+    expect(BS5ReactElements.Alert).toBeTruthy();
+  });
+
   test('exports a named modal', () => {
     expect(BS5ReactElements.Modal).toBeTruthy();
   });
