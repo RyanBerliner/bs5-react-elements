@@ -5,6 +5,10 @@ describe('package index', () => {
     expect(BS5ReactElements.Alert).toBeTruthy();
   });
 
+  test('exports a named dropdown', () => {
+    expect(BS5ReactElements.Dropdown).toBeTruthy();
+  });
+
   test('exports a named modal', () => {
     expect(BS5ReactElements.Modal).toBeTruthy();
   });

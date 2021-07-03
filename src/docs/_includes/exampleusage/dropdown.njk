@@ -1,0 +1,23 @@
+<pre><code>import React from &quot;react&quot;;
+import {Dropdown} from &quot;bs5-react-elements&quot;;
+
+function ExampleUsage() {
+  return &lt;div className=&quot;dropdown&quot;&gt;
+    &lt;Dropdown
+      type=&quot;button&quot;
+      className=&quot;dropdown-toggle&quot;
+      data-bs-toggle=&quot;dropdown&quot;
+      aria-expanded=&quot;false&quot;
+      id=&quot;example-usage&quot;
+    &gt;
+      Lorem ipsum
+    &lt;/Dropdown&gt;
+    &lt;ul className=&quot;dropdown-menu&quot; aria-labelledby=&quot;example-usage&quot;&gt;
+      &lt;li&gt;&lt;a className=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Lorem ipsum #1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a className=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Lorem ipsum #2&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;;
+}</code></pre>
+
+<p><strong>Important!</strong> If you choose to pass a user defined component to the <code>as</code> prop,
+it must support <a href="https://reactjs.org/docs/forwarding-refs.html">ref forwarding.</a></p>
