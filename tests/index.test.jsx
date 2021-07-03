@@ -17,6 +17,10 @@ describe('package index', () => {
     expect(BS5ReactElements.Popover).toBeTruthy();
   });
 
+  test('exports a named toast', () => {
+    expect(BS5ReactElements.Toast).toBeTruthy();
+  });
+
   test('exports a named tooltip', () => {
     expect(BS5ReactElements.Tooltip).toBeTruthy();
   });
