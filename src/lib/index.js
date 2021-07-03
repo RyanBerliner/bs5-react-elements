@@ -1,5 +1,6 @@
 export {Alert} from './Alert.jsx';
 export {Carousel} from './Carousel.jsx';
+export {Collapse} from './Collapse.jsx';
 export {Dropdown} from './Dropdown.jsx';
 export {Modal} from './Modal.jsx';
 export {Offcanvas} from './Offcanvas.jsx';

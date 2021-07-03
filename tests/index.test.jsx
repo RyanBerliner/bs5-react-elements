@@ -9,6 +9,10 @@ describe('package index', () => {
     expect(BS5ReactElements.Carousel).toBeTruthy();
   });
 
+  test('exports a named collapse', () => {
+    expect(BS5ReactElements.Collapse).toBeTruthy();
+  });
+
   test('exports a named dropdown', () => {
     expect(BS5ReactElements.Dropdown).toBeTruthy();
   });
