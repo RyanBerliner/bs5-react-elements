@@ -70,7 +70,7 @@ DropdownComponent.propTypes = {
    */
   children: PropTypes.node,
   /**
-   * The element type of the tooltip
+   * The element type of the dropdown
    */
   as: PropTypes.elementType,
 };
