@@ -21,6 +21,10 @@ describe('package index', () => {
     expect(BS5ReactElements.Popover).toBeTruthy();
   });
 
+  test('exports a named tab', () => {
+    expect(BS5ReactElements.Tab).toBeTruthy();
+  });
+
   test('exports a named toast', () => {
     expect(BS5ReactElements.Toast).toBeTruthy();
   });
