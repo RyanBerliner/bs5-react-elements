@@ -1,0 +1,47 @@
+<pre><code>import React from &quot;react&quot;;
+import {Tab} from &quot;bs5-react-elements&quot;;
+
+function ExampleUsage() {
+  return &lt;&gt;
+    &lt;ul className=&quot;nav nav-tabs&quot; role=&quot;tablist&quot;&gt;
+      &lt;li className=&quot;nav-item&quot; role=&quot;presentation&quot;&gt;
+        &lt;Tab
+          className=&quot;nav-link active&quot;
+          id=&quot;tab-1&quot;
+          data-bs-toggle=&quot;tab&quot;
+          data-bs-target=&quot;#panel-1&quot;
+          type=&quot;button&quot;
+          role=&quot;tab&quot;
+          aria-controls=&quot;panel-1&quot;
+          aria-selected=&quot;true&quot;&gt;Tab 1&lt;/Tab&gt;
+      &lt;/li&gt;
+      &lt;li className=&quot;nav-item&quot; role=&quot;presentation&quot;&gt;
+        &lt;Tab
+          className=&quot;nav-link&quot;
+          id=&quot;tab-2&quot;
+          data-bs-toggle=&quot;tab&quot;
+          data-bs-target=&quot;#panel-2&quot;
+          type=&quot;button&quot;
+          role=&quot;tab&quot;
+          aria-controls=&quot;panel-2&quot;
+          aria-selected=&quot;false&quot;&gt;Tab 2&lt;/Tab&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div className=&quot;tab-content&quot;&gt;
+      &lt;div
+        className=&quot;tab-pane active&quot;
+        id=&quot;panel-1&quot;
+        role=&quot;tabpanel&quot;
+        aria-labelledby=&quot;tab-1&quot;&gt;Lorem ispum 1&lt;/div&gt;
+      &lt;div
+        className=&quot;tab-pane&quot;
+        id=&quot;panel-2&quot;
+        role=&quot;tabpanel&quot;
+        aria-labelledby=&quot;tab-2&quot;&gt;Lorem ipsum 2&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/&gt;;
+}</code></pre>
+
+<p><strong>Important!</strong> If you choose to pass a user defined component to the <code>as</code> prop,
+it must support <a href="https://reactjs.org/docs/forwarding-refs.html">ref forwarding.</a></p>
