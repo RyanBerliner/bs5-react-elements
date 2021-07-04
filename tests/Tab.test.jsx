@@ -8,7 +8,7 @@ import {render, screen, fireEvent} from '@testing-library/react';
  */
 function TestTabs(props) {
   return <>
-    <ul className="nav nav-tabs" id="myTab" role="tablist">
+    <ul className="nav nav-tabs" role="tablist">
       <li className="nav-item" role="presentation">
         <Tab
           className="nav-link active"
