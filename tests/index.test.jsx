@@ -5,6 +5,10 @@ describe('package index', () => {
     expect(BS5ReactElements.Alert).toBeTruthy();
   });
 
+  test('exports a named carousel', () => {
+    expect(BS5ReactElements.Carousel).toBeTruthy();
+  });
+
   test('exports a named dropdown', () => {
     expect(BS5ReactElements.Dropdown).toBeTruthy();
   });
