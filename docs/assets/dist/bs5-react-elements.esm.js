@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useMemo } from 'react';
-import { Modal, Tooltip } from 'bootstrap';
+import { Alert, Carousel, Collapse, Dropdown, Modal, Offcanvas, Popover, Tab, Toast, Tooltip } from 'bootstrap';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -91,7 +91,114 @@ function useBootstrap(Component, config, componentRef, domRef, events) {
   }, [domRef, events]);
 }
 
-var _excluded$1 = ["onShown", "onShow", "onHidden", "onHide", "onHidePrevented", "component", "config", "children"];
+var _excluded$9 = ["onClosed", "onClose", "component", "children"];
+/**
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/alerts/">Bootstrap alert component.</a>
+ */
+
+function AlertComponent(_ref) {
+  var onClosed = _ref.onClosed,
+      onClose = _ref.onClose,
+      component = _ref.component,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, _excluded$9);
+
+  var componentElement = useRef();
+  var events = useMemo(function () {
+    return new Map([['closed.bs.alert', onClosed], ['close.bs.alert', onClose]]);
+  }, [onClosed, onClose]);
+  useBootstrap(Alert, undefined, component, componentElement, events);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: componentElement
+  }, props), children);
+}
+
+AlertComponent.displayName = 'Alert';
+
+var _excluded$8 = ["onSlid", "onSlide", "component", "config", "children"];
+/**
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/carousel/">Bootstrap carousel component.</a>
+ */
+
+function CarouselComponent(_ref) {
+  var onSlid = _ref.onSlid,
+      onSlide = _ref.onSlide,
+      component = _ref.component,
+      config = _ref.config,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, _excluded$8);
+
+  var componentElement = useRef();
+  var events = useMemo(function () {
+    return new Map([['slid.bs.carousel', onSlid], ['slide.bs.carousel', onSlide]]);
+  }, [onSlid, onSlide]);
+  useBootstrap(Carousel, config, component, componentElement, events);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: componentElement
+  }, props), children);
+}
+
+CarouselComponent.displayName = 'Carousel';
+
+var _excluded$7 = ["onShown", "onShow", "onHidden", "onHide", "component", "config", "children"];
+/**
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/collapse/">Bootstrap collapse component.</a>
+ */
+
+function CollapseComponent(_ref) {
+  var onShown = _ref.onShown,
+      onShow = _ref.onShow,
+      onHidden = _ref.onHidden,
+      onHide = _ref.onHide,
+      component = _ref.component,
+      config = _ref.config,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, _excluded$7);
+
+  var componentElement = useRef();
+  var events = useMemo(function () {
+    return new Map([['shown.bs.collapse', onShown], ['show.bs.collapse', onShow], ['hidden.bs.collapse', onHidden], ['hide.bs.collapse', onHide]]);
+  }, [onShown, onShow, onHidden, onHide]);
+  useBootstrap(Collapse, config, component, componentElement, events);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: componentElement
+  }, props), children);
+}
+
+CollapseComponent.displayName = 'Collapse';
+
+var _excluded$6 = ["onShown", "onShow", "onHidden", "onHide", "component", "config", "children", "as"];
+/**
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/dropdowns/">Bootstrap dropdown component.</a>
+ */
+
+function DropdownComponent(_ref) {
+  var onShown = _ref.onShown,
+      onShow = _ref.onShow,
+      onHidden = _ref.onHidden,
+      onHide = _ref.onHide,
+      component = _ref.component,
+      config = _ref.config,
+      children = _ref.children,
+      ElementType = _ref.as,
+      props = _objectWithoutProperties(_ref, _excluded$6);
+
+  var componentElement = useRef();
+  var events = useMemo(function () {
+    return new Map([['shown.bs.dropdown', onShown], ['show.bs.dropdown', onShow], ['hidden.bs.dropdown', onHidden], ['hide.bs.dropdown', onHide]]);
+  }, [onShown, onShow, onHidden, onHide]);
+  useBootstrap(Dropdown, config, component, componentElement, events);
+  return /*#__PURE__*/React.createElement(ElementType, _extends({
+    ref: componentElement
+  }, props), children);
+}
+
+DropdownComponent.defaultProps = {
+  as: 'button'
+};
+DropdownComponent.displayName = 'Dropdown';
+
+var _excluded$5 = ["onShown", "onShow", "onHidden", "onHide", "onHidePrevented", "component", "config", "children"];
 /**
  * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/modal/">Bootstrap modal component.</a>
  */
@@ -105,7 +212,7 @@ function ModalComponent(_ref) {
       component = _ref.component,
       config = _ref.config,
       children = _ref.children,
-      props = _objectWithoutProperties(_ref, _excluded$1);
+      props = _objectWithoutProperties(_ref, _excluded$5);
 
   var componentElement = useRef();
   var events = useMemo(function () {
@@ -118,6 +225,122 @@ function ModalComponent(_ref) {
 }
 
 ModalComponent.displayName = 'Modal';
+
+var _excluded$4 = ["onShown", "onShow", "onHidden", "onHide", "component", "config", "children"];
+/**
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/offcanvas/">Bootstrap offcanvas component.</a>
+ */
+
+function OffcanvasComponent(_ref) {
+  var onShown = _ref.onShown,
+      onShow = _ref.onShow,
+      onHidden = _ref.onHidden,
+      onHide = _ref.onHide,
+      component = _ref.component,
+      config = _ref.config,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, _excluded$4);
+
+  var componentElement = useRef();
+  var events = useMemo(function () {
+    return new Map([['shown.bs.offcanvas', onShown], ['show.bs.offcanvas', onShow], ['hidden.bs.offcanvas', onHidden], ['hide.bs.offcanvas', onHide]]);
+  }, [onShown, onShow, onHidden, onHide]);
+  useBootstrap(Offcanvas, config, component, componentElement, events);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: componentElement
+  }, props), children);
+}
+
+OffcanvasComponent.displayName = 'Offcanvas';
+
+var _excluded$3 = ["onShown", "onShow", "onHidden", "onHide", "onInserted", "component", "config", "children", "as"];
+/**
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/popovers/">Bootstrap popover component.</a>
+ */
+
+function PopoverComponent(_ref) {
+  var onShown = _ref.onShown,
+      onShow = _ref.onShow,
+      onHidden = _ref.onHidden,
+      onHide = _ref.onHide,
+      onInserted = _ref.onInserted,
+      component = _ref.component,
+      config = _ref.config,
+      children = _ref.children,
+      ElementType = _ref.as,
+      props = _objectWithoutProperties(_ref, _excluded$3);
+
+  var componentElement = useRef();
+  var events = useMemo(function () {
+    return new Map([['shown.bs.popover', onShown], ['show.bs.popover', onShow], ['hidden.bs.popover', onHidden], ['hide.bs.popover', onHide], ['inserted.bs.popover', onInserted]]);
+  }, [onShown, onShow, onHidden, onHide, onInserted]);
+  useBootstrap(Popover, config, component, componentElement, events);
+  return /*#__PURE__*/React.createElement(ElementType, _extends({
+    ref: componentElement
+  }, props), children);
+}
+
+PopoverComponent.defaultProps = {
+  as: 'span'
+};
+PopoverComponent.displayName = 'Popover';
+
+var _excluded$2 = ["onShown", "onShow", "onHidden", "onHide", "component", "children", "as"];
+/**
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/navs-tabs/">Bootstrap tab component.</a>
+ */
+
+function TabComponent(_ref) {
+  var onShown = _ref.onShown,
+      onShow = _ref.onShow,
+      onHidden = _ref.onHidden,
+      onHide = _ref.onHide,
+      component = _ref.component,
+      children = _ref.children,
+      ElementType = _ref.as,
+      props = _objectWithoutProperties(_ref, _excluded$2);
+
+  var componentElement = useRef();
+  var events = useMemo(function () {
+    return new Map([['shown.bs.tab', onShown], ['show.bs.tab', onShow], ['hidden.bs.tab', onHidden], ['hide.bs.tab', onHide]]);
+  }, [onShown, onShow, onHidden, onHide]);
+  useBootstrap(Tab, undefined, component, componentElement, events);
+  return /*#__PURE__*/React.createElement(ElementType, _extends({
+    ref: componentElement
+  }, props), children);
+}
+
+TabComponent.defaultProps = {
+  as: 'button'
+};
+TabComponent.displayName = 'Tab';
+
+var _excluded$1 = ["onShown", "onShow", "onHidden", "onHide", "component", "config", "children"];
+/**
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/toasts/">Bootstrap toast component.</a>
+ */
+
+function ToastComponent(_ref) {
+  var onShown = _ref.onShown,
+      onShow = _ref.onShow,
+      onHidden = _ref.onHidden,
+      onHide = _ref.onHide,
+      component = _ref.component,
+      config = _ref.config,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, _excluded$1);
+
+  var componentElement = useRef();
+  var events = useMemo(function () {
+    return new Map([['shown.bs.toast', onShown], ['show.bs.toast', onShow], ['hidden.bs.toast', onHidden], ['hide.bs.toast', onHide]]);
+  }, [onShown, onShow, onHidden, onHide]);
+  useBootstrap(Toast, config, component, componentElement, events);
+  return /*#__PURE__*/React.createElement("div", _extends({
+    ref: componentElement
+  }, props), children);
+}
+
+ToastComponent.displayName = 'Toast';
 
 var _excluded = ["onShown", "onShow", "onHidden", "onHide", "onInserted", "component", "config", "children", "as"];
 /**
@@ -151,5 +374,5 @@ TooltipComponent.defaultProps = {
 };
 TooltipComponent.displayName = 'Tooltip';
 
-export { ModalComponent as Modal, TooltipComponent as Tooltip };
+export { AlertComponent as Alert, CarouselComponent as Carousel, CollapseComponent as Collapse, DropdownComponent as Dropdown, ModalComponent as Modal, OffcanvasComponent as Offcanvas, PopoverComponent as Popover, TabComponent as Tab, ToastComponent as Toast, TooltipComponent as Tooltip };
 //# sourceMappingURL=bs5-react-elements.esm.js.map

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Details - Wrapper for the &lt;a href=&quot;https://getbootstrap.com/docs/5.0/components/modal/&quot;&gt;Bootstrap modal component.&lt;/a&gt;">
-    <title>Bootstrap 5 React Elements | Modal</title>
+    <meta name="description" content="Details - Wrapper for the &lt;a href=&quot;https://getbootstrap.com/docs/5.0/components/offcanvas/&quot;&gt;Bootstrap offcanvas component.&lt;/a&gt;">
+    <title>Bootstrap 5 React Elements | Offcanvas</title>
     <style>
       body {
         max-width: 1100px;
@@ -153,32 +153,30 @@
     </header>
     <main id="content">
       
-<h1>Modal</h1>
+<h1>Offcanvas</h1>
 
-<p>Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/modal/">Bootstrap modal component.</a></p>
+<p>Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/offcanvas/">Bootstrap offcanvas component.</a></p>
 
 <h2>Example Usage</h2>
 
 <pre><code>import React from &quot;react&quot;;
-import {Modal} from &quot;bs5-react-elements&quot;;
+import {Offcanvas} from &quot;bs5-react-elements&quot;;
 
 function ExampleUsage() {
   return &lt;&gt;
-    &lt;button data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#example-usage&quot;&gt;
+    &lt;button data-bs-toggle=&quot;offcanvas&quot; data-bs-target=&quot;#example-usage&quot;&gt;
       Launch
     &lt;/button&gt;
-    &lt;Modal
-      className=&quot;modal fade&quot;
+    &lt;Offcanvas
+      className=&quot;offcanvas offcanvas-start&quot;
       id=&quot;example-usage&quot;
       tabIndex=&quot;-1&quot;
       aria-hidden=&quot;true&quot;
     &gt;
-      &lt;div className=&quot;modal-dialog&quot;&gt;
-        &lt;div className=&quot;modal-content&quot;&gt;
-          Lorem ipsum dolor.
-        &lt;/div&gt;
+      &lt;div className=&quot;offcanvas-body&quot;&gt;
+        Lorem ipsum.
       &lt;/div&gt;
-    &lt;/Modal&gt;
+    &lt;/Offcanvas&gt;
   &lt;/&gt;;
 }</code></pre>
 
@@ -198,7 +196,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onShown</td>
-      <td>Handler for the shown.bs.modal event</td>
+      <td>Handler for the shown.bs.offcanvas event</td>
       <td>
         
         func
@@ -210,7 +208,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onShow</td>
-      <td>Handler for the show.bs.modal event</td>
+      <td>Handler for the show.bs.offcanvas event</td>
       <td>
         
         func
@@ -222,7 +220,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onHidden</td>
-      <td>Handler for the hidden.bs.modal event</td>
+      <td>Handler for the hidden.bs.offcanvas event</td>
       <td>
         
         func
@@ -234,19 +232,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onHide</td>
-      <td>Handler for the hide.bs.modal event</td>
-      <td>
-        
-        func
-        
-      </td>
-      <td></td>
-      <td>false</td>
-    </tr>
-    
-    <tr>
-      <td>onHidePrevented</td>
-      <td>Handler for the hidePrevented.bs.modal event</td>
+      <td>Handler for the hide.bs.offcanvas event</td>
       <td>
         
         func
@@ -284,7 +270,7 @@ function ExampleUsage() {
     
     <tr>
       <td>children</td>
-      <td>Modal contents</td>
+      <td>Offcanvas contents</td>
       <td>
         
         node

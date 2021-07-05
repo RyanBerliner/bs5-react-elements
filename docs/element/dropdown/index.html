@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Details - Wrapper for the &lt;a href=&quot;https://getbootstrap.com/docs/5.0/components/modal/&quot;&gt;Bootstrap modal component.&lt;/a&gt;">
-    <title>Bootstrap 5 React Elements | Modal</title>
+    <meta name="description" content="Details - Wrapper for the &lt;a href=&quot;https://getbootstrap.com/docs/5.0/components/dropdowns/&quot;&gt;Bootstrap dropdown component.&lt;/a&gt;">
+    <title>Bootstrap 5 React Elements | Dropdown</title>
     <style>
       body {
         max-width: 1100px;
@@ -153,34 +153,35 @@
     </header>
     <main id="content">
       
-<h1>Modal</h1>
+<h1>Dropdown</h1>
 
-<p>Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/modal/">Bootstrap modal component.</a></p>
+<p>Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/dropdowns/">Bootstrap dropdown component.</a></p>
 
 <h2>Example Usage</h2>
 
 <pre><code>import React from &quot;react&quot;;
-import {Modal} from &quot;bs5-react-elements&quot;;
+import {Dropdown} from &quot;bs5-react-elements&quot;;
 
 function ExampleUsage() {
-  return &lt;&gt;
-    &lt;button data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#example-usage&quot;&gt;
-      Launch
-    &lt;/button&gt;
-    &lt;Modal
-      className=&quot;modal fade&quot;
+  return &lt;div className=&quot;dropdown&quot;&gt;
+    &lt;Dropdown
+      type=&quot;button&quot;
+      className=&quot;dropdown-toggle&quot;
+      data-bs-toggle=&quot;dropdown&quot;
+      aria-expanded=&quot;false&quot;
       id=&quot;example-usage&quot;
-      tabIndex=&quot;-1&quot;
-      aria-hidden=&quot;true&quot;
     &gt;
-      &lt;div className=&quot;modal-dialog&quot;&gt;
-        &lt;div className=&quot;modal-content&quot;&gt;
-          Lorem ipsum dolor.
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/Modal&gt;
-  &lt;/&gt;;
+      Lorem ipsum
+    &lt;/Dropdown&gt;
+    &lt;ul className=&quot;dropdown-menu&quot; aria-labelledby=&quot;example-usage&quot;&gt;
+      &lt;li&gt;&lt;a className=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Lorem ipsum #1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a className=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Lorem ipsum #2&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;;
 }</code></pre>
+
+<p><strong>Important!</strong> If you choose to pass a user defined component to the <code>as</code> prop,
+it must support <a href="https://reactjs.org/docs/forwarding-refs.html">ref forwarding.</a></p>
 
 <h2>Props</h2>
 
@@ -198,7 +199,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onShown</td>
-      <td>Handler for the shown.bs.modal event</td>
+      <td>Handler for the shown.bs.dropdown event</td>
       <td>
         
         func
@@ -210,7 +211,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onShow</td>
-      <td>Handler for the show.bs.modal event</td>
+      <td>Handler for the show.bs.dropdown event</td>
       <td>
         
         func
@@ -222,7 +223,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onHidden</td>
-      <td>Handler for the hidden.bs.modal event</td>
+      <td>Handler for the hidden.bs.dropdown event</td>
       <td>
         
         func
@@ -234,19 +235,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onHide</td>
-      <td>Handler for the hide.bs.modal event</td>
-      <td>
-        
-        func
-        
-      </td>
-      <td></td>
-      <td>false</td>
-    </tr>
-    
-    <tr>
-      <td>onHidePrevented</td>
-      <td>Handler for the hidePrevented.bs.modal event</td>
+      <td>Handler for the hide.bs.dropdown event</td>
       <td>
         
         func
@@ -284,13 +273,25 @@ function ExampleUsage() {
     
     <tr>
       <td>children</td>
-      <td>Modal contents</td>
+      <td>Dropdown contents</td>
       <td>
         
         node
         
       </td>
       <td></td>
+      <td>false</td>
+    </tr>
+    
+    <tr>
+      <td>as</td>
+      <td>The element type of the dropdown</td>
+      <td>
+        
+        elementType
+        
+      </td>
+      <td>&#39;button&#39;</td>
       <td>false</td>
     </tr>
     

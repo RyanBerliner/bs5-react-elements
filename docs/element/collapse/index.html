@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Details - Wrapper for the &lt;a href=&quot;https://getbootstrap.com/docs/5.0/components/modal/&quot;&gt;Bootstrap modal component.&lt;/a&gt;">
-    <title>Bootstrap 5 React Elements | Modal</title>
+    <meta name="description" content="Details - Wrapper for the &lt;a href=&quot;https://getbootstrap.com/docs/5.0/components/collapse/&quot;&gt;Bootstrap collapse component.&lt;/a&gt;">
+    <title>Bootstrap 5 React Elements | Collapse</title>
     <style>
       body {
         max-width: 1100px;
@@ -153,34 +153,32 @@
     </header>
     <main id="content">
       
-<h1>Modal</h1>
+<h1>Collapse</h1>
 
-<p>Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/modal/">Bootstrap modal component.</a></p>
+<p>Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/collapse/">Bootstrap collapse component.</a></p>
 
 <h2>Example Usage</h2>
 
 <pre><code>import React from &quot;react&quot;;
-import {Modal} from &quot;bs5-react-elements&quot;;
+import {Collapse} from &quot;bs5-react-elements&quot;;
 
 function ExampleUsage() {
   return &lt;&gt;
-    &lt;button data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#example-usage&quot;&gt;
-      Launch
-    &lt;/button&gt;
-    &lt;Modal
-      className=&quot;modal fade&quot;
-      id=&quot;example-usage&quot;
-      tabIndex=&quot;-1&quot;
-      aria-hidden=&quot;true&quot;
+    &lt;button
+      data-bs-toggle=&quot;collapse&quot;
+      data-bs-target=&quot;#example-usage&quot;
+      aria-expanded=&quot;false&quot;
+      aria-controls=&quot;example-usage&quot;
     &gt;
-      &lt;div className=&quot;modal-dialog&quot;&gt;
-        &lt;div className=&quot;modal-content&quot;&gt;
-          Lorem ipsum dolor.
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/Modal&gt;
+      Toggle
+    &lt;/button&gt;
+    &lt;Collapse id=&quot;example-usage&quot; className=&quot;collapse&quot;&gt;
+      Lorem ipsum dolor.
+    &lt;/Collapse&gt;
   &lt;/&gt;;
 }</code></pre>
+
+<p><strong>Important!</strong> If you wish to configure your collapse, you must use the <code>config</code> prop, as data attributes are not supported at the time of this writing. <a href="">Tracking Bootstrap issue #34408.</a></p>
 
 <h2>Props</h2>
 
@@ -198,7 +196,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onShown</td>
-      <td>Handler for the shown.bs.modal event</td>
+      <td>Handler for the shown.bs.collapse event</td>
       <td>
         
         func
@@ -210,7 +208,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onShow</td>
-      <td>Handler for the show.bs.modal event</td>
+      <td>Handler for the show.bs.collapse event</td>
       <td>
         
         func
@@ -222,7 +220,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onHidden</td>
-      <td>Handler for the hidden.bs.modal event</td>
+      <td>Handler for the hidden.bs.collapse event</td>
       <td>
         
         func
@@ -234,19 +232,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onHide</td>
-      <td>Handler for the hide.bs.modal event</td>
-      <td>
-        
-        func
-        
-      </td>
-      <td></td>
-      <td>false</td>
-    </tr>
-    
-    <tr>
-      <td>onHidePrevented</td>
-      <td>Handler for the hidePrevented.bs.modal event</td>
+      <td>Handler for the hide.bs.collapse event</td>
       <td>
         
         func
@@ -284,7 +270,7 @@ function ExampleUsage() {
     
     <tr>
       <td>children</td>
-      <td>Modal contents</td>
+      <td>Collapse contents</td>
       <td>
         
         node

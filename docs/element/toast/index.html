@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Details - Wrapper for the &lt;a href=&quot;https://getbootstrap.com/docs/5.0/components/modal/&quot;&gt;Bootstrap modal component.&lt;/a&gt;">
-    <title>Bootstrap 5 React Elements | Modal</title>
+    <meta name="description" content="Details - Wrapper for the &lt;a href=&quot;https://getbootstrap.com/docs/5.0/components/toasts/&quot;&gt;Bootstrap toast component.&lt;/a&gt;">
+    <title>Bootstrap 5 React Elements | Toast</title>
     <style>
       body {
         max-width: 1100px;
@@ -153,33 +153,21 @@
     </header>
     <main id="content">
       
-<h1>Modal</h1>
+<h1>Toast</h1>
 
-<p>Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/modal/">Bootstrap modal component.</a></p>
+<p>Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/toasts/">Bootstrap toast component.</a></p>
 
 <h2>Example Usage</h2>
 
 <pre><code>import React from &quot;react&quot;;
-import {Modal} from &quot;bs5-react-elements&quot;;
+import {Toast} from &quot;bs5-react-elements&quot;;
 
 function ExampleUsage() {
-  return &lt;&gt;
-    &lt;button data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#example-usage&quot;&gt;
-      Launch
-    &lt;/button&gt;
-    &lt;Modal
-      className=&quot;modal fade&quot;
-      id=&quot;example-usage&quot;
-      tabIndex=&quot;-1&quot;
-      aria-hidden=&quot;true&quot;
-    &gt;
-      &lt;div className=&quot;modal-dialog&quot;&gt;
-        &lt;div className=&quot;modal-content&quot;&gt;
-          Lorem ipsum dolor.
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/Modal&gt;
-  &lt;/&gt;;
+  return &lt;Toast className=&quot;toast&quot; role=&quot;alert&quot;&gt;
+    &lt;div className=&quot;toast-body&quot;&gt;
+      Lorem ipsum dolor.
+    &lt;/div&gt;
+  &lt;/Toast&gt;;
 }</code></pre>
 
 <h2>Props</h2>
@@ -198,7 +186,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onShown</td>
-      <td>Handler for the shown.bs.modal event</td>
+      <td>Handler for the shown.bs.toast event</td>
       <td>
         
         func
@@ -210,7 +198,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onShow</td>
-      <td>Handler for the show.bs.modal event</td>
+      <td>Handler for the show.bs.toast event</td>
       <td>
         
         func
@@ -222,7 +210,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onHidden</td>
-      <td>Handler for the hidden.bs.modal event</td>
+      <td>Handler for the hidden.bs.toast event</td>
       <td>
         
         func
@@ -234,19 +222,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onHide</td>
-      <td>Handler for the hide.bs.modal event</td>
-      <td>
-        
-        func
-        
-      </td>
-      <td></td>
-      <td>false</td>
-    </tr>
-    
-    <tr>
-      <td>onHidePrevented</td>
-      <td>Handler for the hidePrevented.bs.modal event</td>
+      <td>Handler for the hide.bs.toast event</td>
       <td>
         
         func
@@ -284,7 +260,7 @@ function ExampleUsage() {
     
     <tr>
       <td>children</td>
-      <td>Modal contents</td>
+      <td>Toast contents</td>
       <td>
         
         node

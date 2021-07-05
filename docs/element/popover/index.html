@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Details - Wrapper for the &lt;a href=&quot;https://getbootstrap.com/docs/5.0/components/modal/&quot;&gt;Bootstrap modal component.&lt;/a&gt;">
-    <title>Bootstrap 5 React Elements | Modal</title>
+    <meta name="description" content="Details - Wrapper for the &lt;a href=&quot;https://getbootstrap.com/docs/5.0/components/popovers/&quot;&gt;Bootstrap popover component.&lt;/a&gt;">
+    <title>Bootstrap 5 React Elements | Popover</title>
     <style>
       body {
         max-width: 1100px;
@@ -153,34 +153,27 @@
     </header>
     <main id="content">
       
-<h1>Modal</h1>
+<h1>Popover</h1>
 
-<p>Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/modal/">Bootstrap modal component.</a></p>
+<p>Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/popovers/">Bootstrap popover component.</a></p>
 
 <h2>Example Usage</h2>
 
 <pre><code>import React from &quot;react&quot;;
-import {Modal} from &quot;bs5-react-elements&quot;;
+import {Popover} from &quot;bs5-react-elements&quot;;
 
 function ExampleUsage() {
-  return &lt;&gt;
-    &lt;button data-bs-toggle=&quot;modal&quot; data-bs-target=&quot;#example-usage&quot;&gt;
-      Launch
-    &lt;/button&gt;
-    &lt;Modal
-      className=&quot;modal fade&quot;
-      id=&quot;example-usage&quot;
-      tabIndex=&quot;-1&quot;
-      aria-hidden=&quot;true&quot;
-    &gt;
-      &lt;div className=&quot;modal-dialog&quot;&gt;
-        &lt;div className=&quot;modal-content&quot;&gt;
-          Lorem ipsum dolor.
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/Modal&gt;
-  &lt;/&gt;;
+  return &lt;Popover
+    title=&quot;Lorem ipsum&quot;
+    data-bs-content=&quot;Lorem ipsum dolor.&quot;
+    data-bs-toggle=&quot;popover&quot;
+  &gt;
+    Lorem ipsum
+  &lt;/Popover&gt;
 }</code></pre>
+
+<p><strong>Important!</strong> If you choose to pass a user defined component to the <code>as</code> prop,
+it must support <a href="https://reactjs.org/docs/forwarding-refs.html">ref forwarding.</a></p>
 
 <h2>Props</h2>
 
@@ -198,7 +191,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onShown</td>
-      <td>Handler for the shown.bs.modal event</td>
+      <td>Handler for the shown.bs.popover event</td>
       <td>
         
         func
@@ -210,7 +203,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onShow</td>
-      <td>Handler for the show.bs.modal event</td>
+      <td>Handler for the show.bs.popover event</td>
       <td>
         
         func
@@ -222,7 +215,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onHidden</td>
-      <td>Handler for the hidden.bs.modal event</td>
+      <td>Handler for the hidden.bs.popover event</td>
       <td>
         
         func
@@ -234,7 +227,7 @@ function ExampleUsage() {
     
     <tr>
       <td>onHide</td>
-      <td>Handler for the hide.bs.modal event</td>
+      <td>Handler for the hide.bs.popover event</td>
       <td>
         
         func
@@ -245,8 +238,8 @@ function ExampleUsage() {
     </tr>
     
     <tr>
-      <td>onHidePrevented</td>
-      <td>Handler for the hidePrevented.bs.modal event</td>
+      <td>onInserted</td>
+      <td>Handler for the inserted.bs.popover event</td>
       <td>
         
         func
@@ -284,13 +277,25 @@ function ExampleUsage() {
     
     <tr>
       <td>children</td>
-      <td>Modal contents</td>
+      <td>Popover contents</td>
       <td>
         
         node
         
       </td>
       <td></td>
+      <td>false</td>
+    </tr>
+    
+    <tr>
+      <td>as</td>
+      <td>The element type of the popover</td>
+      <td>
+        
+        elementType
+        
+      </td>
+      <td>&#39;span&#39;</td>
       <td>false</td>
     </tr>
     
