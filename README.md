@@ -1,5 +1,7 @@
 # Bootstrap 5 React Elements
 
+[![View on npmjs.com](https://img.shields.io/npm/v/bs5-react-elements)](https://www.npmjs.com/package/bs5-react-elements)
+
 **See [https://ryanberliner.com/bs5-react-elements/](https://ryanberliner.com/bs5-react-elements/) to view full documentation.**
 
 React elements that *use, not replace,* Bootstrap 5 javascript. They expose Bootstrap's existing events and api in a convenient, predictable, and flexible way to your React project.
