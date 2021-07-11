@@ -1,3 +1,4 @@
+name: JS Lint & Test
 on:
   push:
     branches:
