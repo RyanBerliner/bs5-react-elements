@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    open-pull-requests-limit: 1
+    labels:
+      - "dependencies"
+    reviewers:
+      - "ryanberliner"
+    target-branch: "master"
+    versioning-strategy: increase
