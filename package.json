@@ -1,6 +1,6 @@
 {
   "name": "bs5-react-elements",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "React elements that use, not replace, Bootstrap 5 javascript.",
   "main": "dist/bs5-react-elements.js",
   "module": "dist/bs5-react-elements.esm.js",
