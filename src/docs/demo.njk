@@ -15,17 +15,35 @@ description: React element bootstrap tooltip demo.
     <div class="p-5 text-center" id="example-tooltip"></div>
 
     <!-- include react and react dom -->
-    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 
     <!-- include bootstrap js (this is the bundle version, which includes all its peer dependencies) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
     <!-- include the umd build of bootstrap 5 react elements (this library) -->
-    <script src="https://cdn.jsdelivr.net/npm/bs5-react-elements@1.0.0/dist/bs5-react-elements.min.js" crossorigin></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bs5-react-elements@1.0.0/dist/bs5-react-elements.min.js" crossorigin></script> -->
+    <script src="../assets/dist/bs5-react-elements.js" crossorigin></script>
 
     <script>
       'use strict';
+
+      function Counter(props) {
+        const [count, setCounter] = React.useState(0);
+
+        React.useEffect(function() {
+          const interval = setInterval(function() {
+            setCounter(counter => counter + 1);
+          }, 1000);
+          return function() {
+            clearInterval(interval);
+          }
+        }, []);
+
+        props.update();
+
+        return React.createElement('span', null, 'Time elapsed ', count);
+      }
 
       function ExampleUsage(props) {
         const onShownHandler = React.useCallback(function() {
@@ -34,7 +52,14 @@ description: React element bootstrap tooltip demo.
 
         return React.createElement(
           BS5ReactElements.Tooltip,
-          {'data-bs-toggle': 'tooltip', title: 'Lorem ispum dolor.', onShown: onShownHandler},
+          {
+            'data-bs-toggle': 'tooltip',
+            'data-bs-animation': false,
+            tabIndex: 0,
+            title: 'Lorem ispum dolor.',
+            titleComponent: Counter,
+            onShown: onShownHandler
+          },
           'Lorem ipsum'
         );
       }

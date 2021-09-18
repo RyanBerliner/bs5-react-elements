@@ -1,4 +1,5 @@
-import React, {useRef, useMemo} from 'react';
+import React, {useRef, useMemo, useCallback, useState} from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {Tooltip} from 'bootstrap';
 import {useBootstrap} from './hooks.js';
@@ -16,25 +17,50 @@ function TooltipComponent({
   config,
   children,
   as: ElementType,
+  titleComponent: TitleComponent,
   ...props
 }) {
   const componentElement = useRef();
+  const [tip, setTip] = useState();
+
+  const wrappedOnShow = useCallback(() => {
+    const tip = Tooltip.getInstance(componentElement.current).getTipElement();
+    const inner = tip.querySelector('.tooltip-inner');
+    inner.innerHTML = '';
+    setTip(inner);
+
+    if (onShow) {
+      onShow();
+    }
+  }, [onShow]);
+
+  const wrappedHide = useCallback(() => {
+    setTip(null);
+
+    if (onHide) {
+      onHide();
+    }
+  }, [onHide]);
 
   const events = useMemo(() => {
     return new Map([
       ['shown.bs.tooltip', onShown],
-      ['show.bs.tooltip', onShow],
+      ['show.bs.tooltip', wrappedOnShow],
       ['hidden.bs.tooltip', onHidden],
-      ['hide.bs.tooltip', onHide],
+      ['hide.bs.tooltip', wrappedHide],
       ['inserted.bs.tooltip', onInserted],
     ]);
-  }, [onShown, onShow, onHidden, onHide, onInserted]);
+  }, [onShown, wrappedOnShow, onHidden, wrappedHide, onInserted]);
 
   useBootstrap(Tooltip, config, component, componentElement, events);
 
   return (
     <ElementType ref={componentElement} {...props}>
       {children}
+      {(tip && TitleComponent) && ReactDOM.createPortal(
+          <TitleComponent update={() => Tooltip.getInstance(componentElement.current).update()} />,
+          tip,
+      )}
     </ElementType>
   );
 }
