@@ -42,7 +42,12 @@ description: React element bootstrap tooltip demo.
 
         props.component.update();
 
-        return React.createElement('span', null, 'Time elapsed ', count);
+        return React.createElement(
+          'span',
+          {},
+          'Shown for ',
+          React.createElement('strong', {}, count, count === 1 ? ' second' : ' seconds')
+        );
       }
 
       function ExampleUsage(props) {
@@ -56,7 +61,9 @@ description: React element bootstrap tooltip demo.
             'data-bs-toggle': 'tooltip',
             tabIndex: 0,
             title: 'Lorem ispum dolor.',
-            titleComponent: Counter,
+            titleComponent: function(component) {
+              return React.createElement(Counter, {component});
+            },
             onShown: onShownHandler
           },
           'Lorem ipsum'

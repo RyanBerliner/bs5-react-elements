@@ -17,7 +17,7 @@ function TooltipComponent({
   config,
   children,
   as: ElementType,
-  titleComponent: TitleComponent,
+  titleComponent,
   ...props
 }) {
   const componentElement = useRef();
@@ -27,7 +27,7 @@ function TooltipComponent({
     const tip = Tooltip.getInstance(componentElement.current).getTipElement();
     const inner = tip.querySelector('.tooltip-inner');
 
-    if (TitleComponent) {
+    if (titleComponent) {
       inner.innerHTML = '';
     }
 
@@ -36,7 +36,7 @@ function TooltipComponent({
     if (onShow) {
       onShow();
     }
-  }, [onShow, TitleComponent]);
+  }, [onShow, titleComponent]);
 
   const wrappedHide = useCallback(() => {
     setTip(null);
@@ -60,7 +60,7 @@ function TooltipComponent({
     config = {};
   }
 
-  if (TitleComponent && config.animation !== false) {
+  if (titleComponent && config.animation !== false) {
     config.animation = false;
   }
 
@@ -69,10 +69,8 @@ function TooltipComponent({
   return (
     <ElementType ref={componentElement} {...props}>
       {children}
-      {(tip && TitleComponent) && ReactDOM.createPortal(
-          <TitleComponent
-            component={Tooltip.getInstance(componentElement.current)}
-          />,
+      {(tip && titleComponent) && ReactDOM.createPortal(
+          titleComponent(Tooltip.getInstance(componentElement.current)),
           tip,
       )}
     </ElementType>
