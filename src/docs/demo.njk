@@ -60,8 +60,7 @@ description: React element bootstrap tooltip demo.
           {
             'data-bs-toggle': 'tooltip',
             tabIndex: 0,
-            title: 'Lorem ispum dolor.',
-            titleComponent: function(component) {
+            renderTitle: function(component) {
               return React.createElement(Counter, {component});
             },
             onShown: onShownHandler

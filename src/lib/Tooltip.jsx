@@ -17,32 +17,32 @@ function TooltipComponent({
   config,
   children,
   as: ElementType,
-  titleComponent,
+  renderTitle,
   ...props
 }) {
   const componentElement = useRef();
   const [tip, setTip] = useState();
 
-  const wrappedOnShow = useCallback(() => {
+  const wrappedOnShow = useCallback((event) => {
     const tip = Tooltip.getInstance(componentElement.current).getTipElement();
     const inner = tip.querySelector('.tooltip-inner');
 
-    if (titleComponent) {
+    if (renderTitle) {
       inner.innerHTML = '';
     }
 
     setTip(inner);
 
     if (onShow) {
-      onShow();
+      onShow(event);
     }
-  }, [onShow, titleComponent]);
+  }, [onShow, renderTitle]);
 
-  const wrappedHide = useCallback(() => {
+  const wrappedOnHide = useCallback((event) => {
     setTip(null);
 
     if (onHide) {
-      onHide();
+      onHide(event);
     }
   }, [onHide]);
 
@@ -51,26 +51,30 @@ function TooltipComponent({
       ['shown.bs.tooltip', onShown],
       ['show.bs.tooltip', wrappedOnShow],
       ['hidden.bs.tooltip', onHidden],
-      ['hide.bs.tooltip', wrappedHide],
+      ['hide.bs.tooltip', wrappedOnHide],
       ['inserted.bs.tooltip', onInserted],
     ]);
-  }, [onShown, wrappedOnShow, onHidden, wrappedHide, onInserted]);
+  }, [onShown, wrappedOnShow, onHidden, wrappedOnHide, onInserted]);
 
   if (!config) {
     config = {};
   }
 
-  if (titleComponent && config.animation !== false) {
+  if (renderTitle && config.animation !== false) {
     config.animation = false;
   }
 
   useBootstrap(Tooltip, config, component, componentElement, events);
 
+  if (renderTitle) {
+    props.title = ' ';
+  }
+
   return (
     <ElementType ref={componentElement} {...props}>
       {children}
-      {(tip && titleComponent) && ReactDOM.createPortal(
-          titleComponent(Tooltip.getInstance(componentElement.current)),
+      {(tip && renderTitle) && ReactDOM.createPortal(
+          renderTitle(Tooltip.getInstance(componentElement.current)),
           tip,
       )}
     </ElementType>
@@ -117,6 +121,10 @@ TooltipComponent.propTypes = {
    * The element type of the tooltip
    */
   as: PropTypes.elementType,
+  /**
+   * Render tooltip content as a react component
+   */
+  renderTitle: PropTypes.func,
 };
 
 TooltipComponent.defaultProps = {
