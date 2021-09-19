@@ -110,6 +110,47 @@ describe('events bound to props', () => {
   });
 });
 
+describe('render title', () => {
+  /**
+   * Test component for mounting in renderTitle of tooltips
+   */
+  function TestComponent(props) {
+    return <strong>Lorem ipsum</strong>;
+  }
+
+  test('properly mounts react component in tooltip', (done) => {
+    /**
+     * On shown handler that verifys tooltip content
+     */
+    function onShown() {
+      setTimeout(() => {
+        const tooltipInner = document.querySelector('.tooltip-inner');
+        expect(tooltipInner.innerHTML).toBe('<strong>Lorem ipsum</strong>');
+        done();
+      });
+    }
+
+    render(
+        <TestTooltip
+          onShown={onShown}
+          renderTitle={() => <TestComponent />}
+        />,
+    );
+    hoverTooltip();
+  });
+
+  test('properly unmounts react component in tooltip', (done) => {
+    render(
+        <TestTooltip
+          onShown={unHoverTooltip}
+          onHidden={() => done()}
+          renderTitle={() => <TestComponent />}
+        />,
+    );
+    hoverTooltip();
+  });
+});
+
 describe('bootstrap apis', () => {
   test('component object exposed', (done) => {
     /**
