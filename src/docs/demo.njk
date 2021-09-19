@@ -40,7 +40,7 @@ description: React element bootstrap tooltip demo.
           }
         }, []);
 
-        props.update();
+        props.component.update();
 
         return React.createElement('span', null, 'Time elapsed ', count);
       }
@@ -54,7 +54,6 @@ description: React element bootstrap tooltip demo.
           BS5ReactElements.Tooltip,
           {
             'data-bs-toggle': 'tooltip',
-            'data-bs-animation': false,
             tabIndex: 0,
             title: 'Lorem ispum dolor.',
             titleComponent: Counter,

@@ -26,13 +26,17 @@ function TooltipComponent({
   const wrappedOnShow = useCallback(() => {
     const tip = Tooltip.getInstance(componentElement.current).getTipElement();
     const inner = tip.querySelector('.tooltip-inner');
-    inner.innerHTML = '';
+
+    if (TitleComponent) {
+      inner.innerHTML = '';
+    }
+
     setTip(inner);
 
     if (onShow) {
       onShow();
     }
-  }, [onShow]);
+  }, [onShow, TitleComponent]);
 
   const wrappedHide = useCallback(() => {
     setTip(null);
@@ -52,13 +56,23 @@ function TooltipComponent({
     ]);
   }, [onShown, wrappedOnShow, onHidden, wrappedHide, onInserted]);
 
+  if (!config) {
+    config = {};
+  }
+
+  if (TitleComponent && config.animation !== false) {
+    config.animation = false;
+  }
+
   useBootstrap(Tooltip, config, component, componentElement, events);
 
   return (
     <ElementType ref={componentElement} {...props}>
       {children}
       {(tip && TitleComponent) && ReactDOM.createPortal(
-          <TitleComponent update={() => Tooltip.getInstance(componentElement.current).update()} />,
+          <TitleComponent
+            component={Tooltip.getInstance(componentElement.current)}
+          />,
           tip,
       )}
     </ElementType>
