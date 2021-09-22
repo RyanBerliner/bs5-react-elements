@@ -10,8 +10,9 @@ const umdConfig = {
   name: 'BS5ReactElements',
   format: 'umd',
   globals: {
-    'react': 'React',
     'bootstrap': 'bootstrap',
+    'react': 'React',
+    'react-dom': 'ReactDOM',
   },
 };
 
@@ -30,6 +31,6 @@ export default {
     {...esmConfig, file: `${OUTPUT}.esm.js`},
     {...esmConfig, file: `${OUTPUT}.esm.min.js`, plugins: [terser()]},
   ],
-  external: ['bootstrap', 'react'],
+  external: ['bootstrap', 'react', 'react-dom'],
   plugins: [babel({babelHelpers: 'bundled'})],
 };
