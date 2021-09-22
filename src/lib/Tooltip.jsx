@@ -23,7 +23,7 @@ function TooltipComponent({
   const componentElement = useRef();
   const [tip, setTip] = useState();
 
-  const wrappedOnShow = useCallback((event) => {
+  const wrappedOnInserted = useCallback((event) => {
     const tip = Tooltip.getInstance(componentElement.current).getTipElement();
     const inner = tip.querySelector('.tooltip-inner');
 
@@ -33,10 +33,10 @@ function TooltipComponent({
 
     setTip(inner);
 
-    if (onShow) {
-      onShow(event);
+    if (onInserted) {
+      onInserted(event);
     }
-  }, [onShow, renderTitle]);
+  }, [onInserted, renderTitle]);
 
   const wrappedOnHide = useCallback((event) => {
     setTip(null);
@@ -49,12 +49,12 @@ function TooltipComponent({
   const events = useMemo(() => {
     return new Map([
       ['shown.bs.tooltip', onShown],
-      ['show.bs.tooltip', wrappedOnShow],
+      ['show.bs.tooltip', onShow],
       ['hidden.bs.tooltip', onHidden],
       ['hide.bs.tooltip', wrappedOnHide],
-      ['inserted.bs.tooltip', onInserted],
+      ['inserted.bs.tooltip', wrappedOnInserted],
     ]);
-  }, [onShown, wrappedOnShow, onHidden, wrappedOnHide, onInserted]);
+  }, [onShown, onShow, onHidden, wrappedOnHide, wrappedOnInserted]);
 
   if (!config) {
     config = {};

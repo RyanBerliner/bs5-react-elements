@@ -120,9 +120,9 @@ describe('render title', () => {
 
   test('properly mounts react component in tooltip', (done) => {
     /**
-     * On shown handler that verifys tooltip content
+     * On inserted handler that verifys tooltip content
      */
-    function onShown() {
+    function onInserted() {
       setTimeout(() => {
         const tooltipInner = document.querySelector('.tooltip-inner');
         expect(tooltipInner.innerHTML).toBe('<strong>Lorem ipsum</strong>');
@@ -132,7 +132,7 @@ describe('render title', () => {
 
     render(
         <TestTooltip
-          onShown={onShown}
+          onInserted={onInserted}
           renderTitle={() => <TestComponent />}
         />,
     );
@@ -142,7 +142,7 @@ describe('render title', () => {
   test('properly unmounts react component in tooltip', (done) => {
     render(
         <TestTooltip
-          onShown={unHoverTooltip}
+          onInserted={unHoverTooltip}
           onHidden={() => done()}
           renderTitle={() => <TestComponent />}
         />,
