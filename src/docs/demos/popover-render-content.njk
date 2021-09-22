@@ -1,0 +1,63 @@
+---
+layout: demo.njk
+title: Popover Render Content Demo
+description: React element bootstrap popover demo.
+---
+
+<div class="p-5 text-center" id="example-popover"></div>
+
+<script>
+  'use strict';
+
+  function Counter(props) {
+    const [count, setCounter] = React.useState(0);
+
+    React.useEffect(function() {
+      const interval = setInterval(function() {
+        setCounter(counter => counter + 1);
+      }, 1000);
+      return function() {
+        clearInterval(interval);
+      }
+    }, []);
+
+    props.component.update();
+
+    return React.createElement(
+      'span',
+      {},
+      'Shown for ',
+      React.createElement('strong', {}, count, count === 1 ? ' second' : ' seconds')
+    );
+  }
+
+  function ExampleUsage(props) {
+    return React.createElement(
+      BS5ReactElements.Popover,
+      {
+        'data-bs-toggle': 'popover',
+        tabIndex: 0,
+        renderTitle: function(component) {
+          return React.createElement(Counter, {component});
+        },
+        renderContent: function(component) {
+          return React.createElement(
+            'span',
+            {},
+            'This is the popover content.',
+            React.createElement('br'),
+            React.createElement(Counter, {component})
+          );
+        },
+        as: 'button',
+        className: 'btn btn-primary'
+      },
+      'Lorem ipsum'
+    );
+  }
+
+  ReactDOM.render(
+    React.createElement(ExampleUsage),
+    document.querySelector('#example-popover')
+  );
+</script>
