@@ -1,0 +1,33 @@
+---
+layout: demo.njk
+title: Tooltip Demo
+description: React element bootstrap tooltip demo.
+---
+
+<div class="p-5 text-center" id="example-tooltip"></div>
+
+<script>
+  'use strict';
+
+  function ExampleUsage(props) {
+    const onShownHandler = React.useCallback(function() {
+      console.log("The tooltip has been shown.");
+    }, []);
+
+    return React.createElement(
+      BS5ReactElements.Tooltip,
+      {
+        'data-bs-toggle': 'tooltip',
+        tabIndex: 0,
+        title: 'Lorem ipsum dolor',
+        onShown: onShownHandler
+      },
+      'Lorem ipsum'
+    );
+  }
+
+  ReactDOM.render(
+    React.createElement(ExampleUsage),
+    document.querySelector('#example-tooltip')
+  );
+</script>

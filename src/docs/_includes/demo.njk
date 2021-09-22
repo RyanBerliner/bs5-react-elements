@@ -1,8 +1,3 @@
----
-title: Tooltip Demo
-description: React element bootstrap tooltip demo.
----
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,7 +7,6 @@ description: React element bootstrap tooltip demo.
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   </head>
   <body>
-    <div class="p-5 text-center" id="example-tooltip"></div>
 
     <!-- include react and react dom -->
     <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
@@ -22,28 +16,10 @@ description: React element bootstrap tooltip demo.
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
     <!-- include the umd build of bootstrap 5 react elements (this library) -->
-    <script src="https://cdn.jsdelivr.net/npm/bs5-react-elements@1.0.0/dist/bs5-react-elements.min.js" crossorigin></script>
+    <script src="{{ '/assets/dist/bs5-react-elements.min.js' | url }}" crossorigin></script>
 
-    <script>
-      'use strict';
+    {{ content | safe }}
 
-      function ExampleUsage(props) {
-        const onShownHandler = React.useCallback(function() {
-          console.log("The tooltip has been shown.");
-        }, []);
-
-        return React.createElement(
-          BS5ReactElements.Tooltip,
-          {'data-bs-toggle': 'tooltip', title: 'Lorem ispum dolor.', onShown: onShownHandler},
-          'Lorem ipsum'
-        );
-      }
-
-      ReactDOM.render(
-        React.createElement(ExampleUsage),
-        document.querySelector('#example-tooltip')
-      );
-    </script>
   </body>
 </html>
 
