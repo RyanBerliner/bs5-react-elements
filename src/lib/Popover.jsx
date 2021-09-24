@@ -1,4 +1,5 @@
 import React, {useRef, useMemo, useCallback, useState} from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import {Popover} from 'bootstrap';
 import {useBootstrap} from './hooks.js';
@@ -21,8 +22,6 @@ function PopoverComponent({
   ...props
 }) {
   const componentElement = useRef();
-  // popover-header
-  // popover-body
   const [tip, setTip] = useState();
 
   const wrappedOnInserted = useCallback((event) => {

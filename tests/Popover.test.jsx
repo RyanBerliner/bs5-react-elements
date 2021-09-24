@@ -18,6 +18,13 @@ function TestPopover(props) {
 }
 
 /**
+ * Test component for mounting in render props of popovers
+ */
+function TestComponent(props) {
+  return <strong>Lorem ipsum</strong>;
+}
+
+/**
  * Clicks the test test popover.
  */
 function clickPopover() {
@@ -100,6 +107,74 @@ describe('events bound to props', () => {
     }
 
     render(<TestPopover onInserted={onInserted} />);
+    clickPopover();
+  });
+});
+
+describe('render title', () => {
+  test('properly mounts react component in title', (done) => {
+    /**
+     * On inserted handler that verifys popover content
+     */
+    function onInserted() {
+      setTimeout(() => {
+        const popoverHeader = document.querySelector('.popover-header');
+        expect(popoverHeader.innerHTML).toBe('<strong>Lorem ipsum</strong>');
+        done();
+      });
+    }
+
+    render(
+        <TestPopover
+          onInserted={onInserted}
+          renderTitle={() => <TestComponent />}
+        />,
+    );
+    clickPopover();
+  });
+
+  test('properly unmounts react component in popover', (done) => {
+    render(
+        <TestPopover
+          onInserted={clickPopover}
+          onHidden={() => done()}
+          renderTitle={() => <TestComponent />}
+        />,
+    );
+    clickPopover();
+  });
+});
+
+describe('render content', () => {
+  test('properly mounts react component in content', (done) => {
+    /**
+     * On inserted handler that verifys popover content
+     */
+    function onInserted() {
+      setTimeout(() => {
+        const popoverBody = document.querySelector('.popover-body');
+        expect(popoverBody.innerHTML).toBe('<strong>Lorem ipsum</strong>');
+        done();
+      });
+    }
+
+    render(
+        <TestPopover
+          onInserted={onInserted}
+          renderContent={() => <TestComponent />}
+        />,
+    );
+    clickPopover();
+  });
+
+  test('properly unmounts react component in popover', (done) => {
+    render(
+        <TestPopover
+          onInserted={clickPopover}
+          onHidden={() => done()}
+          renderContent={() => <TestComponent />}
+        />,
+    );
     clickPopover();
   });
 });
