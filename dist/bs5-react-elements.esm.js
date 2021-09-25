@@ -1,5 +1,6 @@
-import React, { useRef, useEffect, useMemo } from 'react';
+import React, { useRef, useEffect, useMemo, useState, useCallback } from 'react';
 import { Alert, Carousel, Collapse, Dropdown, Modal, Offcanvas, Popover, Tab, Toast, Tooltip } from 'bootstrap';
+import ReactDOM from 'react-dom';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -53,6 +54,65 @@ function _objectWithoutProperties(source, excluded) {
   }
 
   return target;
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+}
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+
+  if (_i == null) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+
+  var _s, _e;
+
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+  return arr2;
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
 /**
@@ -253,7 +313,7 @@ function OffcanvasComponent(_ref) {
 
 OffcanvasComponent.displayName = 'Offcanvas';
 
-var _excluded$3 = ["onShown", "onShow", "onHidden", "onHide", "onInserted", "component", "config", "children", "as"];
+var _excluded$3 = ["onShown", "onShow", "onHidden", "onHide", "onInserted", "component", "config", "children", "as", "renderTitle", "renderContent"];
 /**
  * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/popovers/">Bootstrap popover component.</a>
  */
@@ -268,16 +328,66 @@ function PopoverComponent(_ref) {
       config = _ref.config,
       children = _ref.children,
       ElementType = _ref.as,
+      renderTitle = _ref.renderTitle,
+      renderContent = _ref.renderContent,
       props = _objectWithoutProperties(_ref, _excluded$3);
 
   var componentElement = useRef();
+
+  var _useState = useState(),
+      _useState2 = _slicedToArray(_useState, 2),
+      tip = _useState2[0],
+      setTip = _useState2[1];
+
+  var wrappedOnInserted = useCallback(function (event) {
+    var tip = Popover.getInstance(componentElement.current).getTipElement();
+
+    if (renderTitle) {
+      tip.querySelector('.popover-header').innerHTML = '';
+    }
+
+    if (renderContent) {
+      tip.querySelector('.popover-body').innerHTML = '';
+    }
+
+    setTip(tip);
+
+    if (onInserted) {
+      onInserted(event);
+    }
+  }, [onInserted, renderTitle, renderContent]);
+  var wrappedOnHide = useCallback(function (event) {
+    setTip(null);
+
+    if (onHide) {
+      onHide(event);
+    }
+  }, [onHide]);
   var events = useMemo(function () {
-    return new Map([['shown.bs.popover', onShown], ['show.bs.popover', onShow], ['hidden.bs.popover', onHidden], ['hide.bs.popover', onHide], ['inserted.bs.popover', onInserted]]);
-  }, [onShown, onShow, onHidden, onHide, onInserted]);
+    return new Map([['shown.bs.popover', onShown], ['show.bs.popover', onShow], ['hidden.bs.popover', onHidden], ['hide.bs.popover', wrappedOnHide], ['inserted.bs.popover', wrappedOnInserted]]);
+  }, [onShown, onShow, onHidden, wrappedOnHide, wrappedOnInserted]);
+
+  if (!config) {
+    config = {};
+  }
+
+  if ((renderTitle || renderContent) && config.animation !== false) {
+    config.animation = false;
+  }
+
   useBootstrap(Popover, config, component, componentElement, events);
+
+  if (renderTitle) {
+    props.title = ' ';
+  }
+
+  if (renderContent) {
+    props['data-bs-content'] = ' ';
+  }
+
   return /*#__PURE__*/React.createElement(ElementType, _extends({
     ref: componentElement
-  }, props), children);
+  }, props), children, tip && renderTitle && /*#__PURE__*/ReactDOM.createPortal(renderTitle(Popover.getInstance(componentElement.current)), tip.querySelector('.popover-header')), tip && renderContent && /*#__PURE__*/ReactDOM.createPortal(renderContent(Popover.getInstance(componentElement.current)), tip.querySelector('.popover-body')));
 }
 
 PopoverComponent.defaultProps = {
@@ -342,7 +452,7 @@ function ToastComponent(_ref) {
 
 ToastComponent.displayName = 'Toast';
 
-var _excluded = ["onShown", "onShow", "onHidden", "onHide", "onInserted", "component", "config", "children", "as"];
+var _excluded = ["onShown", "onShow", "onHidden", "onHide", "onInserted", "component", "config", "children", "as", "renderTitle"];
 /**
  * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/tooltips/">Bootstrap tooltip component.</a>
  */
@@ -357,16 +467,58 @@ function TooltipComponent(_ref) {
       config = _ref.config,
       children = _ref.children,
       ElementType = _ref.as,
+      renderTitle = _ref.renderTitle,
       props = _objectWithoutProperties(_ref, _excluded);
 
   var componentElement = useRef();
+
+  var _useState = useState(),
+      _useState2 = _slicedToArray(_useState, 2),
+      tip = _useState2[0],
+      setTip = _useState2[1];
+
+  var wrappedOnInserted = useCallback(function (event) {
+    var tip = Tooltip.getInstance(componentElement.current).getTipElement();
+    var inner = tip.querySelector('.tooltip-inner');
+
+    if (renderTitle) {
+      inner.innerHTML = '';
+    }
+
+    setTip(inner);
+
+    if (onInserted) {
+      onInserted(event);
+    }
+  }, [onInserted, renderTitle]);
+  var wrappedOnHide = useCallback(function (event) {
+    setTip(null);
+
+    if (onHide) {
+      onHide(event);
+    }
+  }, [onHide]);
   var events = useMemo(function () {
-    return new Map([['shown.bs.tooltip', onShown], ['show.bs.tooltip', onShow], ['hidden.bs.tooltip', onHidden], ['hide.bs.tooltip', onHide], ['inserted.bs.tooltip', onInserted]]);
-  }, [onShown, onShow, onHidden, onHide, onInserted]);
+    return new Map([['shown.bs.tooltip', onShown], ['show.bs.tooltip', onShow], ['hidden.bs.tooltip', onHidden], ['hide.bs.tooltip', wrappedOnHide], ['inserted.bs.tooltip', wrappedOnInserted]]);
+  }, [onShown, onShow, onHidden, wrappedOnHide, wrappedOnInserted]);
+
+  if (!config) {
+    config = {};
+  }
+
+  if (renderTitle && config.animation !== false) {
+    config.animation = false;
+  }
+
   useBootstrap(Tooltip, config, component, componentElement, events);
+
+  if (renderTitle) {
+    props.title = ' ';
+  }
+
   return /*#__PURE__*/React.createElement(ElementType, _extends({
     ref: componentElement
-  }, props), children);
+  }, props), children, tip && renderTitle && /*#__PURE__*/ReactDOM.createPortal(renderTitle(Tooltip.getInstance(componentElement.current)), tip));
 }
 
 TooltipComponent.defaultProps = {
