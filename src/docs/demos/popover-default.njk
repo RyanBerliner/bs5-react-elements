@@ -1,0 +1,31 @@
+---
+layout: demo.njk
+title: Popover Demo
+description: React element bootstrap popover demo.
+---
+
+<div class="p-5 text-center" id="example-popover"></div>
+
+<script>
+  'use strict';
+
+  function ExampleUsage(props) {
+    return React.createElement(
+      BS5ReactElements.Popover,
+      {
+        'data-bs-toggle': 'popover',
+        'data-bs-content': 'Lorem ipsum dolor',
+        tabIndex: 0,
+        title: 'Lorem ipsum',
+        as: 'button',
+        className: 'btn btn-primary'
+      },
+      'Lorem ipsum'
+    );
+  }
+
+  ReactDOM.render(
+    React.createElement(ExampleUsage),
+    document.querySelector('#example-popover')
+  );
+</script>
