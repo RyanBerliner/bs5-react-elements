@@ -96,26 +96,32 @@ function PopoverComponent({
 PopoverComponent.propTypes = {
   /**
    * Handler for the shown.bs.popover event
+   * @since 0.2.0
    */
   onShown: PropTypes.func,
   /**
    * Handler for the show.bs.popover event
+   * @since 0.2.0
    */
   onShow: PropTypes.func,
   /**
    * Handler for the hidden.bs.popover event
+   * @since 0.2.0
    */
   onHidden: PropTypes.func,
   /**
    * Handler for the hide.bs.popover event
+   * @since 0.2.0
    */
   onHide: PropTypes.func,
   /**
    * Handler for the inserted.bs.popover event
+   * @since 0.2.0
    */
   onInserted: PropTypes.func,
   /**
    * React ref that will be assigned the component instance
+   * @since 0.2.0
    */
   component: PropTypes.oneOfType([
     PropTypes.func,
@@ -123,22 +129,27 @@ PopoverComponent.propTypes = {
   ]),
   /**
    * Component configuration
+   * @since 0.2.0
    */
   config: PropTypes.object,
   /**
    * Popover contents
+   * @since 0.2.0
    */
   children: PropTypes.node,
   /**
    * The element type of the popover
+   * @since 0.2.0
    */
   as: PropTypes.elementType,
   /**
    * Render popover title as a react component
+   * @since 2.0.0
    */
   renderTitle: PropTypes.func,
   /**
    * Render popover content as a react component
+   * @since 2.0.0
    */
   renderContent: PropTypes.func,
 };

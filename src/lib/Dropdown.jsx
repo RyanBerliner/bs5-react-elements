@@ -40,22 +40,27 @@ function DropdownComponent({
 DropdownComponent.propTypes = {
   /**
    * Handler for the shown.bs.dropdown event
+   * @since 0.2.0
    */
   onShown: PropTypes.func,
   /**
    * Handler for the show.bs.dropdown event
+   * @since 0.2.0
    */
   onShow: PropTypes.func,
   /**
    * Handler for the hidden.bs.dropdown event
+   * @since 0.2.0
    */
   onHidden: PropTypes.func,
   /**
    * Handler for the hide.bs.dropdown event
+   * @since 0.2.0
    */
   onHide: PropTypes.func,
   /**
    * React ref that will be assigned the component instance
+   * @since 0.2.0
    */
   component: PropTypes.oneOfType([
     PropTypes.func,
@@ -63,14 +68,17 @@ DropdownComponent.propTypes = {
   ]),
   /**
    * Component configuration
+   * @since 0.2.0
    */
   config: PropTypes.object,
   /**
    * Dropdown contents
+   * @since 0.2.0
    */
   children: PropTypes.node,
   /**
    * The element type of the dropdown
+   * @since 0.2.0
    */
   as: PropTypes.elementType,
 };

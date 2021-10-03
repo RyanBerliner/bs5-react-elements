@@ -39,22 +39,27 @@ function ToastComponent({
 ToastComponent.propTypes = {
   /**
    * Handler for the shown.bs.toast event
+   * @since 0.2.0
    */
   onShown: PropTypes.func,
   /**
    * Handler for the show.bs.toast event
+   * @since 0.2.0
    */
   onShow: PropTypes.func,
   /**
    * Handler for the hidden.bs.toast event
+   * @since 0.2.0
    */
   onHidden: PropTypes.func,
   /**
    * Handler for the hide.bs.toast event
+   * @since 0.2.0
    */
   onHide: PropTypes.func,
   /**
    * React ref that will be assigned the component instance
+   * @since 0.2.0
    */
   component: PropTypes.oneOfType([
     PropTypes.func,
@@ -62,10 +67,12 @@ ToastComponent.propTypes = {
   ]),
   /**
    * Component configuration
+   * @since 0.2.0
    */
   config: PropTypes.object,
   /**
    * Toast contents
+   * @since 0.2.0
    */
   children: PropTypes.node,
 };

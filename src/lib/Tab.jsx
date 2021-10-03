@@ -39,22 +39,27 @@ function TabComponent({
 TabComponent.propTypes = {
   /**
    * Handler for the shown.bs.tab event
+   * @since 0.2.0
    */
   onShown: PropTypes.func,
   /**
    * Handler for the show.bs.tab event
+   * @since 0.2.0
    */
   onShow: PropTypes.func,
   /**
    * Handler for the hidden.bs.tab event
+   * @since 0.2.0
    */
   onHidden: PropTypes.func,
   /**
    * Handler for the hide.bs.tab event
+   * @since 0.2.0
    */
   onHide: PropTypes.func,
   /**
    * React ref that will be assigned the component instance
+   * @since 0.2.0
    */
   component: PropTypes.oneOfType([
     PropTypes.func,
@@ -62,10 +67,12 @@ TabComponent.propTypes = {
   ]),
   /**
    * Tab contents
+   * @since 0.2.0
    */
   children: PropTypes.node,
   /**
    * The element type of the tab
+   * @since 0.2.0
    */
   as: PropTypes.elementType,
 };
