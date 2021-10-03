@@ -35,14 +35,17 @@ function CarouselComponent({
 CarouselComponent.propTypes = {
   /**
    * Handler for the slid.bs.carousel event
+   * @since 0.2.0
    */
   onSlid: PropTypes.func,
   /**
    * Handler for the slide.bs.carousel event
+   * @since 0.2.0
    */
   onSlide: PropTypes.func,
   /**
    * React ref that will be assigned the component instance
+   * @since 0.2.0
    */
   component: PropTypes.oneOfType([
     PropTypes.func,
@@ -50,10 +53,12 @@ CarouselComponent.propTypes = {
   ]),
   /**
    * Component configuration
+   * @since 0.2.0
    */
   config: PropTypes.object,
   /**
    * Dropdown contents
+   * @since 0.2.0
    */
   children: PropTypes.node,
 };

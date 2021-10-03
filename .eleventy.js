@@ -3,6 +3,14 @@ module.exports = function(eleventyConfig) {
     return `exampleusage/${value.toLowerCase()}.njk`;
   });
 
+  eleventyConfig.addFilter("propdescription", function(value) {
+    return value.split('@since ')[0];
+  });
+
+  eleventyConfig.addFilter("propsince", function(value) {
+    return value.split('@since ')[1];
+  });
+
   eleventyConfig.addPassthroughCopy({'dist': 'assets/dist'});
 
   return {

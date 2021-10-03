@@ -34,14 +34,17 @@ function AlertComponent({
 AlertComponent.propTypes = {
   /**
    * Handler for the closed.bs.alert event
+   * @since 0.2.0
    */
   onClosed: PropTypes.func,
   /**
    * Handler for the close.bs.alert event
+   * @since 0.2.0
    */
   onClose: PropTypes.func,
   /**
    * React ref that will be assigned the component instance
+   * @since 0.2.0
    */
   component: PropTypes.oneOfType([
     PropTypes.func,
@@ -49,6 +52,7 @@ AlertComponent.propTypes = {
   ]),
   /**
    * Alert contents
+   * @since 0.2.0
    */
   children: PropTypes.node,
 };

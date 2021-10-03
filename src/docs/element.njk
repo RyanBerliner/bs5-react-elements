@@ -29,13 +29,14 @@ renderData:
       <th>Type</th>
       <th>Default Value</th>
       <th>Required</th>
+      <th>Since</th>
     </tr>
     </head>
   <tbody>
     {% for name, details in element.props %}
     <tr>
       <td>{{ name }}</td>
-      <td>{{ details.description }}</td>
+      <td>{{ details.description | propdescription }}</td>
       <td>
         {% if details.type.name == 'union' %}
         {% if details.type.value[0].name == 'func' and details.type.value[1].value.current.name == 'any' %}
@@ -49,6 +50,7 @@ renderData:
       </td>
       <td>{{ details.defaultValue.value }}</td>
       <td>{{ details.required }}</td>
+      <td>{{ details.description | propsince }}</td>
     </tr>
     {% endfor %}
   </tbody>

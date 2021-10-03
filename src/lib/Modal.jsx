@@ -41,38 +41,46 @@ function ModalComponent({
 ModalComponent.propTypes = {
   /**
    * Handler for the shown.bs.modal event
-   */
+   * @since 0.1.0
+  */
   onShown: PropTypes.func,
   /**
    * Handler for the show.bs.modal event
-   */
+   * @since 0.1.0
+  */
   onShow: PropTypes.func,
   /**
    * Handler for the hidden.bs.modal event
-   */
+   * @since 0.1.0
+  */
   onHidden: PropTypes.func,
   /**
    * Handler for the hide.bs.modal event
-   */
+   * @since 0.1.0
+  */
   onHide: PropTypes.func,
   /**
    * Handler for the hidePrevented.bs.modal event
-   */
+   * @since 0.1.0
+  */
   onHidePrevented: PropTypes.func,
   /**
    * React ref that will be assigned the component instance
-   */
+   * @since 0.1.0
+  */
   component: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({current: PropTypes.any}),
   ]),
   /**
    * Component configuration
-   */
+   * @since 0.1.0
+  */
   config: PropTypes.object,
   /**
    * Modal contents
-   */
+   * @since 0.1.0
+  */
   children: PropTypes.node,
 };
 

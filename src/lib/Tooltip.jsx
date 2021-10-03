@@ -84,26 +84,32 @@ function TooltipComponent({
 TooltipComponent.propTypes = {
   /**
    * Handler for the shown.bs.tooltip event
+   * @since 0.1.0
    */
   onShown: PropTypes.func,
   /**
    * Handler for the show.bs.tooltip event
+   * @since 0.1.0
    */
   onShow: PropTypes.func,
   /**
    * Handler for the hidden.bs.tooltip event
+   * @since 0.1.0
    */
   onHidden: PropTypes.func,
   /**
    * Handler for the hide.bs.tooltip event
+   * @since 0.1.0
    */
   onHide: PropTypes.func,
   /**
    * Handler for the inserted.bs.tooltip event
+   * @since 0.1.0
    */
   onInserted: PropTypes.func,
   /**
    * React ref that will be assigned the component instance
+   * @since 0.1.0
    */
   component: PropTypes.oneOfType([
     PropTypes.func,
@@ -111,18 +117,22 @@ TooltipComponent.propTypes = {
   ]),
   /**
    * Component configuration
+   * @since 0.1.0
    */
   config: PropTypes.object,
   /**
    * Tooltip contents
+   * @since 0.1.0
    */
   children: PropTypes.node,
   /**
    * The element type of the tooltip
+   * @since 0.1.0
    */
   as: PropTypes.elementType,
   /**
    * Render tooltip content as a react component
+   * @since 2.0.0
    */
   renderTitle: PropTypes.func,
 };
