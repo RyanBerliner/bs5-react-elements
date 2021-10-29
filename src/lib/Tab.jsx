@@ -4,7 +4,7 @@ import {Tab} from 'bootstrap';
 import {useBootstrap} from './hooks.js';
 
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/navs-tabs/">Bootstrap tab component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/navs-tabs/">Bootstrap tab component.</a>
  */
 function TabComponent({
   onShown,

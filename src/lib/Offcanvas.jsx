@@ -4,7 +4,7 @@ import {Offcanvas} from 'bootstrap';
 import {useBootstrap} from './hooks.js';
 
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/offcanvas/">Bootstrap offcanvas component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/offcanvas/">Bootstrap offcanvas component.</a>
  */
 function OffcanvasComponent({
   onShown,

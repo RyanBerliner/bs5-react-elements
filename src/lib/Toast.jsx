@@ -4,7 +4,7 @@ import {Toast} from 'bootstrap';
 import {useBootstrap} from './hooks.js';
 
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/toasts/">Bootstrap toast component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/toasts/">Bootstrap toast component.</a>
  */
 function ToastComponent({
   onShown,
