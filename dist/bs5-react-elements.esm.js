@@ -20,101 +20,6 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-
-  var target = _objectWithoutPropertiesLoose(source, excluded);
-
-  var key, i;
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-
-function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-
-  var _s, _e;
-
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-  return arr2;
-}
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
 /**
  * Hook to initialize a component, bind events, and expose bootstrap apis.
  *
@@ -126,45 +31,43 @@ function _nonIterableRest() {
  */
 
 function useBootstrap(Component, config, componentRef, domRef, events) {
-  var initialConfig = useRef(config);
-  useEffect(function () {
-    var component = Component.getInstance(domRef.current) || new Component(domRef.current, initialConfig.current);
+  const initialConfig = useRef(config);
+  useEffect(() => {
+    const component = Component.getInstance(domRef.current) || new Component(domRef.current, initialConfig.current);
 
     if (componentRef) {
       componentRef.current = component;
     }
 
-    return function () {
-      return component.dispose();
-    };
+    return () => component.dispose();
   }, [Component, componentRef, domRef]);
-  useEffect(function () {
-    var el = domRef.current;
-    events.forEach(function (value, key) {
+  useEffect(() => {
+    const el = domRef.current;
+    events.forEach((value, key) => {
       el.addEventListener(key, value);
     });
-    return function () {
-      events.forEach(function (value, key) {
+    return () => {
+      events.forEach((value, key) => {
         el.removeEventListener(key, value);
       });
     };
   }, [domRef, events]);
 }
 
-var _excluded$9 = ["onClosed", "onClose", "component", "children"];
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/alerts/">Bootstrap alert component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/alerts/">Bootstrap alert component.</a>
  */
 
 function AlertComponent(_ref) {
-  var onClosed = _ref.onClosed,
-      onClose = _ref.onClose,
-      component = _ref.component,
-      children = _ref.children,
-      props = _objectWithoutProperties(_ref, _excluded$9);
-
-  var componentElement = useRef();
-  var events = useMemo(function () {
+  let {
+    onClosed,
+    onClose,
+    component,
+    children,
+    ...props
+  } = _ref;
+  const componentElement = useRef();
+  const events = useMemo(() => {
     return new Map([['closed.bs.alert', onClosed], ['close.bs.alert', onClose]]);
   }, [onClosed, onClose]);
   useBootstrap(Alert, undefined, component, componentElement, events);
@@ -175,21 +78,21 @@ function AlertComponent(_ref) {
 
 AlertComponent.displayName = 'Alert';
 
-var _excluded$8 = ["onSlid", "onSlide", "component", "config", "children"];
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/carousel/">Bootstrap carousel component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/carousel/">Bootstrap carousel component.</a>
  */
 
 function CarouselComponent(_ref) {
-  var onSlid = _ref.onSlid,
-      onSlide = _ref.onSlide,
-      component = _ref.component,
-      config = _ref.config,
-      children = _ref.children,
-      props = _objectWithoutProperties(_ref, _excluded$8);
-
-  var componentElement = useRef();
-  var events = useMemo(function () {
+  let {
+    onSlid,
+    onSlide,
+    component,
+    config,
+    children,
+    ...props
+  } = _ref;
+  const componentElement = useRef();
+  const events = useMemo(() => {
     return new Map([['slid.bs.carousel', onSlid], ['slide.bs.carousel', onSlide]]);
   }, [onSlid, onSlide]);
   useBootstrap(Carousel, config, component, componentElement, events);
@@ -200,23 +103,23 @@ function CarouselComponent(_ref) {
 
 CarouselComponent.displayName = 'Carousel';
 
-var _excluded$7 = ["onShown", "onShow", "onHidden", "onHide", "component", "config", "children"];
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/collapse/">Bootstrap collapse component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/collapse/">Bootstrap collapse component.</a>
  */
 
 function CollapseComponent(_ref) {
-  var onShown = _ref.onShown,
-      onShow = _ref.onShow,
-      onHidden = _ref.onHidden,
-      onHide = _ref.onHide,
-      component = _ref.component,
-      config = _ref.config,
-      children = _ref.children,
-      props = _objectWithoutProperties(_ref, _excluded$7);
-
-  var componentElement = useRef();
-  var events = useMemo(function () {
+  let {
+    onShown,
+    onShow,
+    onHidden,
+    onHide,
+    component,
+    config,
+    children,
+    ...props
+  } = _ref;
+  const componentElement = useRef();
+  const events = useMemo(() => {
     return new Map([['shown.bs.collapse', onShown], ['show.bs.collapse', onShow], ['hidden.bs.collapse', onHidden], ['hide.bs.collapse', onHide]]);
   }, [onShown, onShow, onHidden, onHide]);
   useBootstrap(Collapse, config, component, componentElement, events);
@@ -227,24 +130,24 @@ function CollapseComponent(_ref) {
 
 CollapseComponent.displayName = 'Collapse';
 
-var _excluded$6 = ["onShown", "onShow", "onHidden", "onHide", "component", "config", "children", "as"];
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/dropdowns/">Bootstrap dropdown component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/dropdowns/">Bootstrap dropdown component.</a>
  */
 
 function DropdownComponent(_ref) {
-  var onShown = _ref.onShown,
-      onShow = _ref.onShow,
-      onHidden = _ref.onHidden,
-      onHide = _ref.onHide,
-      component = _ref.component,
-      config = _ref.config,
-      children = _ref.children,
-      ElementType = _ref.as,
-      props = _objectWithoutProperties(_ref, _excluded$6);
-
-  var componentElement = useRef();
-  var events = useMemo(function () {
+  let {
+    onShown,
+    onShow,
+    onHidden,
+    onHide,
+    component,
+    config,
+    children,
+    as: ElementType,
+    ...props
+  } = _ref;
+  const componentElement = useRef();
+  const events = useMemo(() => {
     return new Map([['shown.bs.dropdown', onShown], ['show.bs.dropdown', onShow], ['hidden.bs.dropdown', onHidden], ['hide.bs.dropdown', onHide]]);
   }, [onShown, onShow, onHidden, onHide]);
   useBootstrap(Dropdown, config, component, componentElement, events);
@@ -258,24 +161,24 @@ DropdownComponent.defaultProps = {
 };
 DropdownComponent.displayName = 'Dropdown';
 
-var _excluded$5 = ["onShown", "onShow", "onHidden", "onHide", "onHidePrevented", "component", "config", "children"];
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/modal/">Bootstrap modal component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/modal/">Bootstrap modal component.</a>
  */
 
 function ModalComponent(_ref) {
-  var onShown = _ref.onShown,
-      onShow = _ref.onShow,
-      onHidden = _ref.onHidden,
-      onHide = _ref.onHide,
-      onHidePrevented = _ref.onHidePrevented,
-      component = _ref.component,
-      config = _ref.config,
-      children = _ref.children,
-      props = _objectWithoutProperties(_ref, _excluded$5);
-
-  var componentElement = useRef();
-  var events = useMemo(function () {
+  let {
+    onShown,
+    onShow,
+    onHidden,
+    onHide,
+    onHidePrevented,
+    component,
+    config,
+    children,
+    ...props
+  } = _ref;
+  const componentElement = useRef();
+  const events = useMemo(() => {
     return new Map([['shown.bs.modal', onShown], ['show.bs.modal', onShow], ['hidden.bs.modal', onHidden], ['hide.bs.modal', onHide], ['hidePrevented.bs.modal', onHidePrevented]]);
   }, [onShown, onShow, onHidden, onHide, onHidePrevented]);
   useBootstrap(Modal, config, component, componentElement, events);
@@ -286,23 +189,23 @@ function ModalComponent(_ref) {
 
 ModalComponent.displayName = 'Modal';
 
-var _excluded$4 = ["onShown", "onShow", "onHidden", "onHide", "component", "config", "children"];
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/offcanvas/">Bootstrap offcanvas component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/offcanvas/">Bootstrap offcanvas component.</a>
  */
 
 function OffcanvasComponent(_ref) {
-  var onShown = _ref.onShown,
-      onShow = _ref.onShow,
-      onHidden = _ref.onHidden,
-      onHide = _ref.onHide,
-      component = _ref.component,
-      config = _ref.config,
-      children = _ref.children,
-      props = _objectWithoutProperties(_ref, _excluded$4);
-
-  var componentElement = useRef();
-  var events = useMemo(function () {
+  let {
+    onShown,
+    onShow,
+    onHidden,
+    onHide,
+    component,
+    config,
+    children,
+    ...props
+  } = _ref;
+  const componentElement = useRef();
+  const events = useMemo(() => {
     return new Map([['shown.bs.offcanvas', onShown], ['show.bs.offcanvas', onShow], ['hidden.bs.offcanvas', onHidden], ['hide.bs.offcanvas', onHide]]);
   }, [onShown, onShow, onHidden, onHide]);
   useBootstrap(Offcanvas, config, component, componentElement, events);
@@ -313,34 +216,29 @@ function OffcanvasComponent(_ref) {
 
 OffcanvasComponent.displayName = 'Offcanvas';
 
-var _excluded$3 = ["onShown", "onShow", "onHidden", "onHide", "onInserted", "component", "config", "children", "as", "renderTitle", "renderContent"];
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/popovers/">Bootstrap popover component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/popovers/">Bootstrap popover component.</a>
  */
 
 function PopoverComponent(_ref) {
-  var onShown = _ref.onShown,
-      onShow = _ref.onShow,
-      onHidden = _ref.onHidden,
-      onHide = _ref.onHide,
-      onInserted = _ref.onInserted,
-      component = _ref.component,
-      config = _ref.config,
-      children = _ref.children,
-      ElementType = _ref.as,
-      renderTitle = _ref.renderTitle,
-      renderContent = _ref.renderContent,
-      props = _objectWithoutProperties(_ref, _excluded$3);
-
-  var componentElement = useRef();
-
-  var _useState = useState(),
-      _useState2 = _slicedToArray(_useState, 2),
-      tip = _useState2[0],
-      setTip = _useState2[1];
-
-  var wrappedOnInserted = useCallback(function (event) {
-    var tip = Popover.getInstance(componentElement.current).getTipElement();
+  let {
+    onShown,
+    onShow,
+    onHidden,
+    onHide,
+    onInserted,
+    component,
+    config,
+    children,
+    as: ElementType,
+    renderTitle,
+    renderContent,
+    ...props
+  } = _ref;
+  const componentElement = useRef();
+  const [tip, setTip] = useState();
+  const wrappedOnInserted = useCallback(event => {
+    const tip = Popover.getInstance(componentElement.current).getTipElement();
 
     if (renderTitle) {
       tip.querySelector('.popover-header').innerHTML = '';
@@ -356,14 +254,14 @@ function PopoverComponent(_ref) {
       onInserted(event);
     }
   }, [onInserted, renderTitle, renderContent]);
-  var wrappedOnHide = useCallback(function (event) {
+  const wrappedOnHide = useCallback(event => {
     setTip(null);
 
     if (onHide) {
       onHide(event);
     }
   }, [onHide]);
-  var events = useMemo(function () {
+  const events = useMemo(() => {
     return new Map([['shown.bs.popover', onShown], ['show.bs.popover', onShow], ['hidden.bs.popover', onHidden], ['hide.bs.popover', wrappedOnHide], ['inserted.bs.popover', wrappedOnInserted]]);
   }, [onShown, onShow, onHidden, wrappedOnHide, wrappedOnInserted]);
 
@@ -395,23 +293,23 @@ PopoverComponent.defaultProps = {
 };
 PopoverComponent.displayName = 'Popover';
 
-var _excluded$2 = ["onShown", "onShow", "onHidden", "onHide", "component", "children", "as"];
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/navs-tabs/">Bootstrap tab component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/navs-tabs/">Bootstrap tab component.</a>
  */
 
 function TabComponent(_ref) {
-  var onShown = _ref.onShown,
-      onShow = _ref.onShow,
-      onHidden = _ref.onHidden,
-      onHide = _ref.onHide,
-      component = _ref.component,
-      children = _ref.children,
-      ElementType = _ref.as,
-      props = _objectWithoutProperties(_ref, _excluded$2);
-
-  var componentElement = useRef();
-  var events = useMemo(function () {
+  let {
+    onShown,
+    onShow,
+    onHidden,
+    onHide,
+    component,
+    children,
+    as: ElementType,
+    ...props
+  } = _ref;
+  const componentElement = useRef();
+  const events = useMemo(() => {
     return new Map([['shown.bs.tab', onShown], ['show.bs.tab', onShow], ['hidden.bs.tab', onHidden], ['hide.bs.tab', onHide]]);
   }, [onShown, onShow, onHidden, onHide]);
   useBootstrap(Tab, undefined, component, componentElement, events);
@@ -425,23 +323,23 @@ TabComponent.defaultProps = {
 };
 TabComponent.displayName = 'Tab';
 
-var _excluded$1 = ["onShown", "onShow", "onHidden", "onHide", "component", "config", "children"];
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/toasts/">Bootstrap toast component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/toasts/">Bootstrap toast component.</a>
  */
 
 function ToastComponent(_ref) {
-  var onShown = _ref.onShown,
-      onShow = _ref.onShow,
-      onHidden = _ref.onHidden,
-      onHide = _ref.onHide,
-      component = _ref.component,
-      config = _ref.config,
-      children = _ref.children,
-      props = _objectWithoutProperties(_ref, _excluded$1);
-
-  var componentElement = useRef();
-  var events = useMemo(function () {
+  let {
+    onShown,
+    onShow,
+    onHidden,
+    onHide,
+    component,
+    config,
+    children,
+    ...props
+  } = _ref;
+  const componentElement = useRef();
+  const events = useMemo(() => {
     return new Map([['shown.bs.toast', onShown], ['show.bs.toast', onShow], ['hidden.bs.toast', onHidden], ['hide.bs.toast', onHide]]);
   }, [onShown, onShow, onHidden, onHide]);
   useBootstrap(Toast, config, component, componentElement, events);
@@ -452,34 +350,29 @@ function ToastComponent(_ref) {
 
 ToastComponent.displayName = 'Toast';
 
-var _excluded = ["onShown", "onShow", "onHidden", "onHide", "onInserted", "component", "config", "children", "as", "renderTitle"];
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.0/components/tooltips/">Bootstrap tooltip component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/tooltips/">Bootstrap tooltip component.</a>
  */
 
 function TooltipComponent(_ref) {
-  var onShown = _ref.onShown,
-      onShow = _ref.onShow,
-      onHidden = _ref.onHidden,
-      onHide = _ref.onHide,
-      onInserted = _ref.onInserted,
-      component = _ref.component,
-      config = _ref.config,
-      children = _ref.children,
-      ElementType = _ref.as,
-      renderTitle = _ref.renderTitle,
-      props = _objectWithoutProperties(_ref, _excluded);
-
-  var componentElement = useRef();
-
-  var _useState = useState(),
-      _useState2 = _slicedToArray(_useState, 2),
-      tip = _useState2[0],
-      setTip = _useState2[1];
-
-  var wrappedOnInserted = useCallback(function (event) {
-    var tip = Tooltip.getInstance(componentElement.current).getTipElement();
-    var inner = tip.querySelector('.tooltip-inner');
+  let {
+    onShown,
+    onShow,
+    onHidden,
+    onHide,
+    onInserted,
+    component,
+    config,
+    children,
+    as: ElementType,
+    renderTitle,
+    ...props
+  } = _ref;
+  const componentElement = useRef();
+  const [tip, setTip] = useState();
+  const wrappedOnInserted = useCallback(event => {
+    const tip = Tooltip.getInstance(componentElement.current).getTipElement();
+    const inner = tip.querySelector('.tooltip-inner');
 
     if (renderTitle) {
       inner.innerHTML = '';
@@ -491,14 +384,14 @@ function TooltipComponent(_ref) {
       onInserted(event);
     }
   }, [onInserted, renderTitle]);
-  var wrappedOnHide = useCallback(function (event) {
+  const wrappedOnHide = useCallback(event => {
     setTip(null);
 
     if (onHide) {
       onHide(event);
     }
   }, [onHide]);
-  var events = useMemo(function () {
+  const events = useMemo(() => {
     return new Map([['shown.bs.tooltip', onShown], ['show.bs.tooltip', onShow], ['hidden.bs.tooltip', onHidden], ['hide.bs.tooltip', wrappedOnHide], ['inserted.bs.tooltip', wrappedOnInserted]]);
   }, [onShown, onShow, onHidden, wrappedOnHide, wrappedOnInserted]);
 
