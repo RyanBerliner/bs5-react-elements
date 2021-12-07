@@ -21,14 +21,13 @@ renderData:
 
 <h2>Props</h2>
 
-<table style="width:100%">
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>Type</th>
       <th>Default Value</th>
-      <th>Required</th>
       <th>Since</th>
     </tr>
     </head>
@@ -49,7 +48,6 @@ renderData:
         {% endif %}
       </td>
       <td>{{ details.defaultValue.value }}</td>
-      <td>{{ details.required }}</td>
       <td>{{ details.description | propsince }}</td>
     </tr>
     {% endfor %}
