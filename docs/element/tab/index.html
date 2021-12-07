@@ -5,159 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Details - Wrapper for the &lt;a href=&quot;https://getbootstrap.com/docs/5.1/components/navs-tabs/&quot;&gt;Bootstrap tab component.&lt;/a&gt;">
     <title>Bootstrap 5 React Elements | Tab</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <style>
-      body {
-        max-width: 1100px;
-        margin: 20px auto;
-        padding: 0 30px;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-      }
-
-      header {
-        -webkit-margin-end: 33px;
-                margin-inline-end: 33px;
-        -ms-flex-preferred-size: 300px;
-            flex-basis: 300px;
-        -webkit-box-flex: 0;
-            -ms-flex-positive: 0;
-                flex-grow: 0;
-        -ms-flex-negative: 0;
-            flex-shrink: 0;
-      }
-
-      header h1 {
-        font-size: 1.5rem;
-      }
-
-      header nav h2 {
-        font-size: 1.25rem;
-      }
-
-      main {
-        -webkit-box-flex: 1;
-            -ms-flex-positive: 1;
-                flex-grow: 1;
-      }
-
-      table {
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      td, th {
-        border: 1px solid black;
-        padding: 2px 4px;
-      }
-
-      .skip {
-        position: absolute;
-        background-color: white;
-        border: 1px solid black;
-        padding: .2em .5em;
-      }
-
-      .skip:not(:focus) {
-        opacity: 0;
-        height: 1px;
-        width: 1px;
-      }
-
-      .demo-iframe {
-        width: 100%;
-        border: 1px solid black;
-        height: 8rem;
+      pre {
+        background-color: var(--bs-light);
+        padding: var(--bs-gutter-x);
       }
     </style>
   </head>
   <body>
-    <header>
-      <a href="#content" class="skip">Skip to content</a>
-      <h1>Bootstrap 5 React Elements</h1>
-      <p>
-        <a href="https://www.npmjs.com/package/bs5-react-elements"><img alt="View on npmjs.com" src="https://img.shields.io/npm/v/bs5-react-elements" /></a>
-      </p>
-      <p>
-        <a href="https://github.com/RyanBerliner/bs5-react-elements">View on GitHub</a>
-      </p>
-      <nav>
-        <h2>Introduction</h2>
-        <ul>
-          <li><a href="/bs5-react-elements/">Getting Started</a></li>
-          <li><a href="/bs5-react-elements/installation-options/">Installation Options</a></li>
-          <li><a href="/bs5-react-elements/event-props/">Event props</a></li>
-          <li><a href="/bs5-react-elements/component-prop/">The <code>component</code> prop</a></li>
-          <li><a href="/bs5-react-elements/config-prop/">The <code>config</code> prop</a></li>
-        </ul>
-        <h2>All Elements</h2>
-        <ul>
+    <div class="container">
+      <div class="row">
+        <header class="col my-5" style="max-width: 20rem;">
+          <a href="#content" class="visually-hidden-focusable position-absolute m-2 btn btn-primary">Skip to content</a>
+          <h1 class="h5 fw-bold">Bootstrap 5 React Elements</h1>
+          <p>
+            <a href="https://www.npmjs.com/package/bs5-react-elements"><img alt="View on npmjs.com" src="https://img.shields.io/npm/v/bs5-react-elements" /></a>
+          </p>
+          <p>
+            <a href="https://github.com/RyanBerliner/bs5-react-elements">View on GitHub</a>
+          </p>
+          <nav>
+            <h2>Introduction</h2>
+            <ul>
+              <li><a href="/bs5-react-elements/">Getting Started</a></li>
+              <li><a href="/bs5-react-elements/installation-options/">Installation Options</a></li>
+              <li><a href="/bs5-react-elements/event-props/">Event props</a></li>
+              <li><a href="/bs5-react-elements/component-prop/">The <code>component</code> prop</a></li>
+              <li><a href="/bs5-react-elements/config-prop/">The <code>config</code> prop</a></li>
+            </ul>
+            <h2>All Elements</h2>
+            <ul>
+              
+                <li>
+                  <a href="/bs5-react-elements/element/alert/">
+                    Alert
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/bs5-react-elements/element/carousel/">
+                    Carousel
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/bs5-react-elements/element/collapse/">
+                    Collapse
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/bs5-react-elements/element/dropdown/">
+                    Dropdown
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/bs5-react-elements/element/modal/">
+                    Modal
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/bs5-react-elements/element/offcanvas/">
+                    Offcanvas
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/bs5-react-elements/element/popover/">
+                    Popover
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/bs5-react-elements/element/tab/">
+                    Tab
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/bs5-react-elements/element/toast/">
+                    Toast
+                  </a>
+                </li>
+              
+                <li>
+                  <a href="/bs5-react-elements/element/tooltip/">
+                    Tooltip
+                  </a>
+                </li>
+              
+            </ul>
+          </nav>
+        </header>
+        <main class="col my-5" id="content">
           
-            <li>
-              <a href="/bs5-react-elements/element/alert/">
-                Alert
-              </a>
-            </li>
-          
-            <li>
-              <a href="/bs5-react-elements/element/carousel/">
-                Carousel
-              </a>
-            </li>
-          
-            <li>
-              <a href="/bs5-react-elements/element/collapse/">
-                Collapse
-              </a>
-            </li>
-          
-            <li>
-              <a href="/bs5-react-elements/element/dropdown/">
-                Dropdown
-              </a>
-            </li>
-          
-            <li>
-              <a href="/bs5-react-elements/element/modal/">
-                Modal
-              </a>
-            </li>
-          
-            <li>
-              <a href="/bs5-react-elements/element/offcanvas/">
-                Offcanvas
-              </a>
-            </li>
-          
-            <li>
-              <a href="/bs5-react-elements/element/popover/">
-                Popover
-              </a>
-            </li>
-          
-            <li>
-              <a href="/bs5-react-elements/element/tab/">
-                Tab
-              </a>
-            </li>
-          
-            <li>
-              <a href="/bs5-react-elements/element/toast/">
-                Toast
-              </a>
-            </li>
-          
-            <li>
-              <a href="/bs5-react-elements/element/tooltip/">
-                Tooltip
-              </a>
-            </li>
-          
-        </ul>
-      </nav>
-    </header>
-    <main id="content">
-      
 <h1>Tab</h1>
 
 <p>Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/navs-tabs/">Bootstrap tab component.</a></p>
@@ -214,14 +158,13 @@ it must support <a href="https://reactjs.org/docs/forwarding-refs.html">ref forw
 
 <h2>Props</h2>
 
-<table style="width:100%">
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Description</th>
       <th>Type</th>
       <th>Default Value</th>
-      <th>Required</th>
       <th>Since</th>
     </tr>
     </head>
@@ -237,7 +180,6 @@ it must support <a href="https://reactjs.org/docs/forwarding-refs.html">ref forw
         
       </td>
       <td></td>
-      <td>false</td>
       <td>0.2.0</td>
     </tr>
     
@@ -251,7 +193,6 @@ it must support <a href="https://reactjs.org/docs/forwarding-refs.html">ref forw
         
       </td>
       <td></td>
-      <td>false</td>
       <td>0.2.0</td>
     </tr>
     
@@ -265,7 +206,6 @@ it must support <a href="https://reactjs.org/docs/forwarding-refs.html">ref forw
         
       </td>
       <td></td>
-      <td>false</td>
       <td>0.2.0</td>
     </tr>
     
@@ -279,7 +219,6 @@ it must support <a href="https://reactjs.org/docs/forwarding-refs.html">ref forw
         
       </td>
       <td></td>
-      <td>false</td>
       <td>0.2.0</td>
     </tr>
     
@@ -295,7 +234,6 @@ it must support <a href="https://reactjs.org/docs/forwarding-refs.html">ref forw
         
       </td>
       <td></td>
-      <td>false</td>
       <td>0.2.0</td>
     </tr>
     
@@ -309,7 +247,6 @@ it must support <a href="https://reactjs.org/docs/forwarding-refs.html">ref forw
         
       </td>
       <td></td>
-      <td>false</td>
       <td>0.2.0</td>
     </tr>
     
@@ -323,12 +260,14 @@ it must support <a href="https://reactjs.org/docs/forwarding-refs.html">ref forw
         
       </td>
       <td>&#39;button&#39;</td>
-      <td>false</td>
       <td>0.2.0</td>
     </tr>
     
   </tbody>
 </table>
-    </main>
+        </main>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
   </body>
 </html>
