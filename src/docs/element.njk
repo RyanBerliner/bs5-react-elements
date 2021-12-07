@@ -28,7 +28,6 @@ renderData:
       <th>Description</th>
       <th>Type</th>
       <th>Default Value</th>
-      <th>Required</th>
       <th>Since</th>
     </tr>
     </head>
@@ -49,7 +48,6 @@ renderData:
         {% endif %}
       </td>
       <td>{{ details.defaultValue.value }}</td>
-      <td>{{ details.required }}</td>
       <td>{{ details.description | propsince }}</td>
     </tr>
     {% endfor %}
