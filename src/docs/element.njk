@@ -22,7 +22,7 @@ renderData:
 <h2>Demos</h2>
 
 {% if collections[element.displayName] | length > 0 %}
-  <p>The demos below show this component in action. You can view the source code of each demo to see how they work.</p>
+  <p>The demos below show this element in action. You can view the source code of each demo to see how they work.</p>
   <ul>
     {% for demo in collections[element.displayName] %}
       <li><a href="{{demo.url | url}}">{{demo.data.title}}</a></li>
@@ -30,7 +30,7 @@ renderData:
   </ul>
 {% else %}
   <p class="text-muted">
-    There are no demos available for this component.
+    There are no demos available for this element.
     Submit an <a href="https://github.com/RyanBerliner/bs5-react-elements/issues">issue</a> or <a href="https://github.com/RyanBerliner/bs5-react-elements/pulls">pull request</a> on GitHub to add one.
   </p>
 {% endif %}
