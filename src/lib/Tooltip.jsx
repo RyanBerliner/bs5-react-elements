@@ -24,7 +24,8 @@ function TooltipComponent({
   const [tip, setTip] = useState();
 
   const wrappedOnInserted = useCallback((event) => {
-    const tip = Tooltip.getInstance(componentElement.current).getTipElement();
+    const tipId = componentElement.current.getAttribute('aria-describedby');
+    const tip = document.getElementById(tipId);
     const inner = tip.querySelector('.tooltip-inner');
 
     if (renderTitle) {
