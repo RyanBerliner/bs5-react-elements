@@ -238,8 +238,7 @@ function PopoverComponent(_ref) {
   const componentElement = useRef();
   const [tip, setTip] = useState();
   const wrappedOnInserted = useCallback(event => {
-    const tipId = componentElement.current.getAttribute('aria-describedby');
-    const tip = document.getElementById(tipId);
+    const tip = Popover.getInstance(componentElement.current).getTipElement();
 
     if (renderTitle) {
       tip.querySelector('.popover-header').innerHTML = '';
@@ -372,8 +371,7 @@ function TooltipComponent(_ref) {
   const componentElement = useRef();
   const [tip, setTip] = useState();
   const wrappedOnInserted = useCallback(event => {
-    const tipId = componentElement.current.getAttribute('aria-describedby');
-    const tip = document.getElementById(tipId);
+    const tip = Tooltip.getInstance(componentElement.current).getTipElement();
     const inner = tip.querySelector('.tooltip-inner');
 
     if (renderTitle) {
