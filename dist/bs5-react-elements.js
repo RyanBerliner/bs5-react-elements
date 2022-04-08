@@ -245,7 +245,8 @@
     const componentElement = React.useRef();
     const [tip, setTip] = React.useState();
     const wrappedOnInserted = React.useCallback(event => {
-      const tip = bootstrap.Popover.getInstance(componentElement.current).getTipElement();
+      const tipId = componentElement.current.getAttribute('aria-describedby');
+      const tip = document.getElementById(tipId);
 
       if (renderTitle) {
         tip.querySelector('.popover-header').innerHTML = '';
@@ -378,7 +379,8 @@
     const componentElement = React.useRef();
     const [tip, setTip] = React.useState();
     const wrappedOnInserted = React.useCallback(event => {
-      const tip = bootstrap.Tooltip.getInstance(componentElement.current).getTipElement();
+      const tipId = componentElement.current.getAttribute('aria-describedby');
+      const tip = document.getElementById(tipId);
       const inner = tip.querySelector('.tooltip-inner');
 
       if (renderTitle) {
