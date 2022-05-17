@@ -38,7 +38,7 @@
     "@11ty/eleventy": "^1.0.1",
     "@babel/core": "^7.17.12",
     "@babel/preset-env": "^7.17.12",
-    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-react": "^7.17.12",
     "@popperjs/core": "^2.11.5",
     "@rollup/plugin-babel": "^5.3.1",
     "@testing-library/react": "^12.1.5",
