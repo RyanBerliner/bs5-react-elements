@@ -1,4 +1,5 @@
 import React, {useEffect, useRef} from 'react';
+import {Modal as BSModal} from 'bootstrap';
 import {Modal} from '../src/lib/Modal';
 import {render, screen, fireEvent} from '@testing-library/react';
 
@@ -44,7 +45,9 @@ function close() {
  * Attempts to close the modal by clicking the modal backdrop.
  */
 function backdropClick() {
-  fireEvent.click(document.querySelector('.modal'));
+  // Bootstrap changes from click to mousedown events in https://github.com/twbs/bootstrap/pull/36401
+  const event = BSModal.VERSION.split('.')[1] >= 2 ? 'mouseDown' : 'click';
+  fireEvent[event](document.querySelector('.modal'));
 }
 
 // Timeouts are used to prevent disposing of bootstrap components that are in
