@@ -1,4 +1,5 @@
-name: JS Lint & Test
+
+name: Code Quality
 on:
   push:
     branches:
@@ -7,7 +8,7 @@ on:
     branches:
       - master
 jobs:
-  run:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,6 +19,3 @@ jobs:
 
       - name: Lint
         run: npm run lint
-
-      - name: Test
-        run: npm run test
