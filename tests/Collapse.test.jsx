@@ -43,7 +43,7 @@ describe('events bound to props', () => {
       setTimeout(() => done(), 500);
     }
 
-    render(<TestCollapse data-bs-toggle="false" onShow={onShow} />);
+    render(<TestCollapse config={{toggle: false}} onShow={onShow} />);
     toggle();
   });
 
@@ -58,7 +58,7 @@ describe('events bound to props', () => {
       setTimeout(() => done(), 500);
     }
 
-    render(<TestCollapse data-bs-toggle="false" onShown={onShown} />);
+    render(<TestCollapse config={{toggle: false}} onShown={onShown} />);
     toggle();
   });
 
@@ -75,7 +75,7 @@ describe('events bound to props', () => {
 
     render(
         <TestCollapse
-          data-bs-toggle="false"
+          config={{toggle: false}}
           onShown={toggle}
           onHide={onHide}
         />,
@@ -96,7 +96,7 @@ describe('events bound to props', () => {
 
     render(
         <TestCollapse
-          data-bs-toggle="false"
+          config={{toggle: false}}
           onShown={toggle}
           onHidden={onHidden}
         />,
@@ -115,7 +115,7 @@ describe('bootstrap apis', () => {
       const component = useRef();
       useEffect(() => component.current.show());
       return <TestCollapse
-        data-bs-toggle="false"
+        config={{toggle: false}}
         component={component}
         {...props}
       />;
