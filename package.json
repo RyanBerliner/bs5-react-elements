@@ -30,6 +30,9 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
+    "setupFiles": [
+      "<rootDir>/setupJest.js"
+    ],
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
     }
@@ -43,7 +46,9 @@
     "@rollup/plugin-babel": "^5.3.1",
     "@testing-library/react": "^12.1.5",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "bootstrap": "^5.1.3",
+    "bootstrap": "^5.2.0",
+    "bootstrap5-0": "npm:bootstrap@5.0",
+    "bootstrap5-1": "npm:bootstrap@5.1",
     "eslint": "^8.18.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.30.0",
