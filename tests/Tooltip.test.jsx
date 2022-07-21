@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import {Tooltip} from '../src/lib/Tooltip';
+import {majorMinor} from './utils';
 import {render, screen, fireEvent} from '@testing-library/react';
 
 /**
@@ -197,22 +198,22 @@ describe('bootstrap apis', () => {
 describe('markup', () => {
   test('minimum markup renders as expected', () => {
     const {container} = render(<Tooltip />);
-    expect(container.innerHTML).toMatchSnapshot();
+    expect(container.innerHTML).toMatchSnapshot(majorMinor);
   });
 
   test('places children in correct element', () => {
     const {container} = render(<Tooltip>child</Tooltip>);
-    expect(container.innerHTML).toMatchSnapshot();
+    expect(container.innerHTML).toMatchSnapshot(majorMinor);
   });
 
   test('support additional attributes, place them correctly', () => {
     const {container} = render(<Tooltip data-lorem="ipsum" />);
-    expect(container.innerHTML).toMatchSnapshot();
+    expect(container.innerHTML).toMatchSnapshot(majorMinor);
   });
 
   test('supports custom tagname by string', () => {
     const {container} = render(<Tooltip as="button" />);
-    expect(container.innerHTML).toMatchSnapshot();
+    expect(container.innerHTML).toMatchSnapshot(majorMinor);
   });
 
   test('support custom tagname with components supporting ref forwards', () => {
@@ -231,6 +232,6 @@ describe('markup', () => {
     };
 
     const {container} = render(<Tooltip as={Link}>child</Tooltip>);
-    expect(container.innerHTML).toMatchSnapshot();
+    expect(container.innerHTML).toMatchSnapshot(majorMinor);
   });
 });

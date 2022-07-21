@@ -1,11 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`markup minimum markup renders as expected 1`] = `"<span data-bs-original-title=\\"\\" title=\\"\\"></span>"`;
+exports[`markup minimum markup renders as expected: 5.0 1`] = `"<span data-bs-original-title=\\"\\" title=\\"\\"></span>"`;
 
-exports[`markup places children in correct element 1`] = `"<span data-bs-original-title=\\"\\" title=\\"\\">child</span>"`;
+exports[`markup minimum markup renders as expected: 5.1 1`] = `"<span data-bs-original-title=\\"\\" title=\\"\\"></span>"`;
 
-exports[`markup support additional attributes, place them correctly 1`] = `"<span data-lorem=\\"ipsum\\" data-bs-original-title=\\"\\" title=\\"\\"></span>"`;
+exports[`markup minimum markup renders as expected: 5.2 1`] = `"<span></span>"`;
 
-exports[`markup support custom tagname with components supporting ref forwards 1`] = `"<a data-bs-original-title=\\"\\" title=\\"\\">child</a>"`;
+exports[`markup places children in correct element: 5.0 1`] = `"<span data-bs-original-title=\\"\\" title=\\"\\">child</span>"`;
 
-exports[`markup supports custom tagname by string 1`] = `"<button data-bs-original-title=\\"\\" title=\\"\\"></button>"`;
+exports[`markup places children in correct element: 5.1 1`] = `"<span data-bs-original-title=\\"\\" title=\\"\\">child</span>"`;
+
+exports[`markup places children in correct element: 5.2 1`] = `"<span>child</span>"`;
+
+exports[`markup support additional attributes, place them correctly: 5.0 1`] = `"<span data-lorem=\\"ipsum\\" data-bs-original-title=\\"\\" title=\\"\\"></span>"`;
+
+exports[`markup support additional attributes, place them correctly: 5.1 1`] = `"<span data-lorem=\\"ipsum\\" data-bs-original-title=\\"\\" title=\\"\\"></span>"`;
+
+exports[`markup support additional attributes, place them correctly: 5.2 1`] = `"<span data-lorem=\\"ipsum\\"></span>"`;
+
+exports[`markup support custom tagname with components supporting ref forwards: 5.0 1`] = `"<a data-bs-original-title=\\"\\" title=\\"\\">child</a>"`;
+
+exports[`markup support custom tagname with components supporting ref forwards: 5.1 1`] = `"<a data-bs-original-title=\\"\\" title=\\"\\">child</a>"`;
+
+exports[`markup support custom tagname with components supporting ref forwards: 5.2 1`] = `"<a>child</a>"`;
+
+exports[`markup supports custom tagname by string: 5.0 1`] = `"<button data-bs-original-title=\\"\\" title=\\"\\"></button>"`;
+
+exports[`markup supports custom tagname by string: 5.1 1`] = `"<button data-bs-original-title=\\"\\" title=\\"\\"></button>"`;
+
+exports[`markup supports custom tagname by string: 5.2 1`] = `"<button></button>"`;
