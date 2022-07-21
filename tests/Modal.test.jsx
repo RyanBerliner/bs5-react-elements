@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {Modal as BSModal} from 'bootstrap';
 import {Modal} from '../src/lib/Modal';
+import {minor} from './utils';
 import {render, screen, fireEvent} from '@testing-library/react';
 
 /**
@@ -46,7 +47,7 @@ function close() {
  */
 function backdropClick() {
   // Bootstrap changes from click to mousedown events in https://github.com/twbs/bootstrap/pull/36401
-  const event = BSModal.VERSION.split('.')[1] >= 2 ? 'mouseDown' : 'click';
+  const event = minor >= 2 ? 'mouseDown' : 'click';
   fireEvent[event](document.querySelector('.modal'));
 }
 
