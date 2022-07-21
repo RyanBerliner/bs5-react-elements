@@ -1,5 +1,4 @@
 import React, {useEffect, useRef} from 'react';
-import {Modal as BSModal} from 'bootstrap';
 import {Modal} from '../src/lib/Modal';
 import {minor} from './utils';
 import {render, screen, fireEvent} from '@testing-library/react';
