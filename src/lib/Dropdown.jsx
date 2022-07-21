@@ -4,7 +4,7 @@ import {Dropdown} from 'bootstrap';
 import {useBootstrap} from './hooks.js';
 
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/dropdowns/">Bootstrap dropdown component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.2/components/dropdowns/">Bootstrap dropdown component.</a>
  */
 function DropdownComponent({
   onShown,

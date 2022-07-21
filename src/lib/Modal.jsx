@@ -4,7 +4,7 @@ import {Modal} from 'bootstrap';
 import {useBootstrap} from './hooks.js';
 
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/modal/">Bootstrap modal component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.2/components/modal/">Bootstrap modal component.</a>
  */
 function ModalComponent({
   onShown,

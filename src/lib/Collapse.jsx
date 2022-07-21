@@ -4,7 +4,7 @@ import {Collapse} from 'bootstrap';
 import {useBootstrap} from './hooks.js';
 
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/collapse/">Bootstrap collapse component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.2/components/collapse/">Bootstrap collapse component.</a>
  */
 function CollapseComponent({
   onShown,
