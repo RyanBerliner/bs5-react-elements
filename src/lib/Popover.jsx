@@ -5,7 +5,7 @@ import {Popover} from 'bootstrap';
 import {useBootstrap} from './hooks.js';
 
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/popovers/">Bootstrap popover component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.2/components/popovers/">Bootstrap popover component.</a>
  */
 function PopoverComponent({
   onShown,

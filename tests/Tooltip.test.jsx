@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, forwardRef} from 'react';
 import PropTypes from 'prop-types';
 import {Tooltip} from '../src/lib/Tooltip';
+import {majorMinor} from './utils';
 import {render, screen, fireEvent} from '@testing-library/react';
 
 /**
@@ -197,22 +198,48 @@ describe('bootstrap apis', () => {
 describe('markup', () => {
   test('minimum markup renders as expected', () => {
     const {container} = render(<Tooltip />);
-    expect(container.innerHTML).toMatchSnapshot();
+    const snapshots = {
+      '5.2': `"<span></span>"`,
+      '5.1': `"<span data-bs-original-title=\\"\\" title=\\"\\"></span>"`,
+      '5.0': `"<span data-bs-original-title=\\"\\" title=\\"\\"></span>"`,
+    };
+
+    expect(container.innerHTML).toMatchInlineSnapshot(snapshots[majorMinor]);
   });
 
   test('places children in correct element', () => {
     const {container} = render(<Tooltip>child</Tooltip>);
-    expect(container.innerHTML).toMatchSnapshot();
+    const snapshots = {
+      '5.2': `"<span>child</span>"`,
+      '5.1': `"<span data-bs-original-title=\\"\\" title=\\"\\">child</span>"`,
+      '5.0': `"<span data-bs-original-title=\\"\\" title=\\"\\">child</span>"`,
+    };
+
+    expect(container.innerHTML).toMatchInlineSnapshot(snapshots[majorMinor]);
   });
 
   test('support additional attributes, place them correctly', () => {
     const {container} = render(<Tooltip data-lorem="ipsum" />);
-    expect(container.innerHTML).toMatchSnapshot();
+    const snapshots = {
+      '5.2': `"<span data-lorem=\\"ipsum\\"></span>"`,
+      // eslint-disable-next-line max-len
+      '5.1': `"<span data-lorem=\\"ipsum\\" data-bs-original-title=\\"\\" title=\\"\\"></span>"`,
+      // eslint-disable-next-line max-len
+      '5.0': `"<span data-lorem=\\"ipsum\\" data-bs-original-title=\\"\\" title=\\"\\"></span>"`,
+    };
+
+    expect(container.innerHTML).toMatchInlineSnapshot(snapshots[majorMinor]);
   });
 
   test('supports custom tagname by string', () => {
     const {container} = render(<Tooltip as="button" />);
-    expect(container.innerHTML).toMatchSnapshot();
+    const snapshots = {
+      '5.2': `"<button></button>"`,
+      '5.1': `"<button data-bs-original-title=\\"\\" title=\\"\\"></button>"`,
+      '5.0': `"<button data-bs-original-title=\\"\\" title=\\"\\"></button>"`,
+    };
+
+    expect(container.innerHTML).toMatchInlineSnapshot(snapshots[majorMinor]);
   });
 
   test('support custom tagname with components supporting ref forwards', () => {
@@ -231,6 +258,12 @@ describe('markup', () => {
     };
 
     const {container} = render(<Tooltip as={Link}>child</Tooltip>);
-    expect(container.innerHTML).toMatchSnapshot();
+    const snapshots = {
+      '5.2': `"<a>child</a>"`,
+      '5.1': `"<a data-bs-original-title=\\"\\" title=\\"\\">child</a>"`,
+      '5.0': `"<a data-bs-original-title=\\"\\" title=\\"\\">child</a>"`,
+    };
+
+    expect(container.innerHTML).toMatchInlineSnapshot(snapshots[majorMinor]);
   });
 });

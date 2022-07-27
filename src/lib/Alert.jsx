@@ -4,7 +4,7 @@ import {Alert} from 'bootstrap';
 import {useBootstrap} from './hooks.js';
 
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/alerts/">Bootstrap alert component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.2/components/alerts/">Bootstrap alert component.</a>
  */
 function AlertComponent({
   onClosed,
