@@ -49,7 +49,7 @@
     "bootstrap": "^5.2.0",
     "bootstrap5-0": "npm:bootstrap@5.0",
     "bootstrap5-1": "npm:bootstrap@5.1",
-    "eslint": "^8.21.0",
+    "eslint": "^8.22.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.30.1",
     "jest": "^28.1.3",
