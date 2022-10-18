@@ -47,7 +47,12 @@ function close() {
 function backdropClick() {
   // Bootstrap changes from click to mousedown events in https://github.com/twbs/bootstrap/pull/36401
   const event = minor >= 2 ? 'mouseDown' : 'click';
-  fireEvent[event](document.querySelector('.modal'));
+  const modal = document.querySelector('.modal');
+  fireEvent[event](modal);
+
+  // Then later move to combination of the two https://github.com/twbs/bootstrap/pull/36863
+  if (minor < 2) return;
+  fireEvent.click(modal);
 }
 
 // Timeouts are used to prevent disposing of bootstrap components that are in
