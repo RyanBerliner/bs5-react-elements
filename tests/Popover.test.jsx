@@ -32,6 +32,15 @@ function clickPopover() {
   fireEvent.click(screen.getByText('Test popover'));
 }
 
+/**
+ * Clicks the test popover after a small delay (literally minimal)
+ */
+function delayedClickPopover() {
+  setTimeout(() =>{
+    fireEvent.click(screen.getByText('Test popover'));
+  });
+}
+
 // Timeouts are used to prevent disposing of bootstrap components that are in
 // the middle of a transition. This is a bootstrap bug. TODO: Submit an issue.
 
@@ -137,7 +146,7 @@ describe('render title', () => {
   test('properly unmounts react component in popover', (done) => {
     render(
         <TestPopover
-          onInserted={clickPopover}
+          onInserted={delayedClickPopover}
           onHidden={() => done()}
           renderTitle={() => <TestComponent />}
         />,
@@ -171,7 +180,7 @@ describe('render content', () => {
   test('properly unmounts react component in popover', (done) => {
     render(
         <TestPopover
-          onInserted={clickPopover}
+          onInserted={delayedClickPopover}
           onHidden={() => done()}
           renderContent={() => <TestComponent />}
         />,
