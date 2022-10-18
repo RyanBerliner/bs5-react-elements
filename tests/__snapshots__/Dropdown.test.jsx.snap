@@ -4,7 +4,7 @@ exports[`markup minimum markup renders as expected 1`] = `"<button></button>"`;
 
 exports[`markup places children in correct element 1`] = `"<button>child</button>"`;
 
-exports[`markup support additional attributes, place them correctly 1`] = `"<button data-lorem=\\"ipsum\\"></button>"`;
+exports[`markup support additional attributes, place them correctly 1`] = `"<button data-lorem="ipsum"></button>"`;
 
 exports[`markup support custom tagname with components supporting ref forwards 1`] = `"<a>child</a>"`;
 
