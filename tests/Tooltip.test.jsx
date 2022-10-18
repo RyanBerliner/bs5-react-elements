@@ -200,8 +200,8 @@ describe('markup', () => {
     const {container} = render(<Tooltip />);
     const snapshots = {
       '5.2': `"<span></span>"`,
-      '5.1': `"<span data-bs-original-title=\\"\\" title=\\"\\"></span>"`,
-      '5.0': `"<span data-bs-original-title=\\"\\" title=\\"\\"></span>"`,
+      '5.1': `"<span data-bs-original-title="" title=""></span>"`,
+      '5.0': `"<span data-bs-original-title="" title=""></span>"`,
     };
 
     expect(container.innerHTML).toMatchInlineSnapshot(snapshots[majorMinor]);
@@ -211,8 +211,8 @@ describe('markup', () => {
     const {container} = render(<Tooltip>child</Tooltip>);
     const snapshots = {
       '5.2': `"<span>child</span>"`,
-      '5.1': `"<span data-bs-original-title=\\"\\" title=\\"\\">child</span>"`,
-      '5.0': `"<span data-bs-original-title=\\"\\" title=\\"\\">child</span>"`,
+      '5.1': `"<span data-bs-original-title="" title="">child</span>"`,
+      '5.0': `"<span data-bs-original-title="" title="">child</span>"`,
     };
 
     expect(container.innerHTML).toMatchInlineSnapshot(snapshots[majorMinor]);
@@ -260,8 +260,8 @@ describe('markup', () => {
     const {container} = render(<Tooltip as={Link}>child</Tooltip>);
     const snapshots = {
       '5.2': `"<a>child</a>"`,
-      '5.1': `"<a data-bs-original-title=\\"\\" title=\\"\\">child</a>"`,
-      '5.0': `"<a data-bs-original-title=\\"\\" title=\\"\\">child</a>"`,
+      '5.1': `"<a data-bs-original-title="" title="">child</a>"`,
+      '5.0': `"<a data-bs-original-title="" title="">child</a>"`,
     };
 
     expect(container.innerHTML).toMatchInlineSnapshot(snapshots[majorMinor]);

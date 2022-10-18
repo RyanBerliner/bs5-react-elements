@@ -297,8 +297,8 @@ describe('markup', () => {
     const {container} = render(<Popover as={Link}>child</Popover>);
     const snapshots = {
       '5.2': `"<a>child</a>"`,
-      '5.1': `"<a data-bs-original-title=\\"\\" title=\\"\\">child</a>"`,
-      '5.0': `"<a data-bs-original-title=\\"\\" title=\\"\\">child</a>"`,
+      '5.1': `"<a data-bs-original-title="" title="">child</a>"`,
+      '5.0': `"<a data-bs-original-title="" title="">child</a>"`,
     };
 
     expect(container.innerHTML).toMatchInlineSnapshot(snapshots[majorMinor]);
