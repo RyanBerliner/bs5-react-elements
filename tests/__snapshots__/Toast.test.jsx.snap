@@ -4,4 +4,4 @@ exports[`markup minimum markup renders as expected 1`] = `"<div></div>"`;
 
 exports[`markup places children in correct element 1`] = `"<div>child</div>"`;
 
-exports[`markup support additional attributes, place them correctly 1`] = `"<div data-lorem=\\"ipsum\\"></div>"`;
+exports[`markup support additional attributes, place them correctly 1`] = `"<div data-lorem="ipsum"></div>"`;
