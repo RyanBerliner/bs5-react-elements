@@ -236,6 +236,7 @@ describe('markup', () => {
   test('minimum markup renders as expected', () => {
     const {container} = render(<Popover />);
     const snapshots = {
+      '5.3': `"<span></span>"`,
       '5.2': `"<span></span>"`,
       '5.1': `"<span data-bs-original-title="" title=""></span>"`,
       '5.0': `"<span data-bs-original-title="" title=""></span>"`,
@@ -247,6 +248,7 @@ describe('markup', () => {
   test('places children in correct element', () => {
     const {container} = render(<Popover>child</Popover>);
     const snapshots = {
+      '5.3': `"<span>child</span>"`,
       '5.2': `"<span>child</span>"`,
       '5.1': `"<span data-bs-original-title="" title="">child</span>"`,
       '5.0': `"<span data-bs-original-title="" title="">child</span>"`,
@@ -258,6 +260,7 @@ describe('markup', () => {
   test('support additional attributes, place them correctly', () => {
     const {container} = render(<Popover data-lorem="ipsum" />);
     const snapshots = {
+      '5.3': `"<span data-lorem="ipsum"></span>"`,
       '5.2': `"<span data-lorem="ipsum"></span>"`,
       // eslint-disable-next-line max-len
       '5.1': `"<span data-lorem="ipsum" data-bs-original-title="" title=""></span>"`,
@@ -271,6 +274,7 @@ describe('markup', () => {
   test('supports custom tagname by string', () => {
     const {container} = render(<Popover as="button" />);
     const snapshots = {
+      '5.3': `"<button></button>"`,
       '5.2': `"<button></button>"`,
       '5.1': `"<button data-bs-original-title="" title=""></button>"`,
       '5.0': `"<button data-bs-original-title="" title=""></button>"`,
@@ -296,6 +300,7 @@ describe('markup', () => {
 
     const {container} = render(<Popover as={Link}>child</Popover>);
     const snapshots = {
+      '5.3': `"<a>child</a>"`,
       '5.2': `"<a>child</a>"`,
       '5.1': `"<a data-bs-original-title="" title="">child</a>"`,
       '5.0': `"<a data-bs-original-title="" title="">child</a>"`,
