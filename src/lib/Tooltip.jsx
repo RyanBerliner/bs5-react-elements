@@ -5,7 +5,7 @@ import {Tooltip} from 'bootstrap';
 import {useBootstrap} from './hooks.js';
 
 /**
- * Wrapper for the <a href="https://getbootstrap.com/docs/5.2/components/tooltips/">Bootstrap tooltip component.</a>
+ * Wrapper for the <a href="https://getbootstrap.com/docs/5.3/components/tooltips/">Bootstrap tooltip component.</a>
  */
 function TooltipComponent({
   onShown,
