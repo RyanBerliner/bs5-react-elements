@@ -1,0 +1,4 @@
+dist/* linguist-generated
+docs/* linguist-generated
+
+src/docs/* linguist-documentation
