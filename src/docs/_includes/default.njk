@@ -59,8 +59,8 @@
             <ul>
               {% for file, element in elements %}
                 <li>
-                  <a href="{{ '/element/' | url }}{{ element.displayName | slug }}/">
-                    {{ element.displayName }}
+                  <a href="{{ '/element/' | url }}{{ element[0].displayName | slug }}/">
+                    {{ element[0].displayName }}
                   </a>
                 </li>
               {% endfor %}

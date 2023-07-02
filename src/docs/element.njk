@@ -4,27 +4,27 @@ pagination:
   resolve: values
   size: 1
   alias: element
-permalink: "element/{{ element.displayName | slug }}/"
+permalink: "element/{{ element[0].displayName | slug }}/"
 layout: default.njk
 renderData:
-  title: Bootstrap 5 React Elements | {{ element.displayName }}
-  description: Details - {{ element.description }}
+  title: Bootstrap 5 React Elements | {{ element[0].displayName }}
+  description: Details - {{ element[0].description }}
 ---
 
-<h1>{{ element.displayName }}</h1>
+<h1>{{ element[0].displayName }}</h1>
 
-<p>{{ element.description | safe }}</p>
+<p>{{ element[0].description | safe }}</p>
 
 <h2>Example Usage</h2>
 
-{% include element.displayName | exampleusage %}
+{% include element[0].displayName | exampleusage %}
 
 <h2>Demos</h2>
 
-{% if collections[element.displayName] | length > 0 %}
+{% if collections[element[0].displayName] | length > 0 %}
   <p>The demos below show this element in action. You can view the source code of each demo to see how they work.</p>
   <ul>
-    {% for demo in collections[element.displayName] %}
+    {% for demo in collections[element[0].displayName] %}
       <li><a href="{{demo.url | url}}">{{demo.data.title}}</a></li>
     {% endfor %}
   </ul>
@@ -48,7 +48,7 @@ renderData:
     </tr>
     </head>
   <tbody>
-    {% for name, details in element.props %}
+    {% for name, details in element[0].props %}
     <tr>
       <td>{{ name }}</td>
       <td>{{ details.description | propdescription }}</td>
