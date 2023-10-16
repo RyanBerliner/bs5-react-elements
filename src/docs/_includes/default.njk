@@ -57,7 +57,7 @@
             </ul>
             <h2 class="text-uppercase text-muted fw-semibold small">All Elements</h2>
             <ul>
-              {% for file, element in elements %}
+              {% for file, element in elements | dictsort %}
                 <li>
                   <a href="{{ '/element/' | url }}{{ element[0].displayName | slug }}/">
                     {{ element[0].displayName }}
