@@ -6,9 +6,9 @@ pagination:
   alias: element
 permalink: "element/{{ element[0].displayName | slug }}/"
 layout: default.njk
-renderData:
-  title: Bootstrap 5 React Elements | {{ element[0].displayName }}
-  description: Details - {{ element[0].description }}
+eleventyComputed:
+  title: "{{ element[0].displayName }}"
+  description: "Details - {{ element[0].description }}"
 ---
 
 <h1>{{ element[0].displayName }}</h1>
