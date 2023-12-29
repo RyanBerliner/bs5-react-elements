@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@babel/core": "^7.23.6",
+    "@babel/core": "^7.23.7",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.23.3",
     "@popperjs/core": "^2.11.6",
