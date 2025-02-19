@@ -43,7 +43,7 @@
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
     "@popperjs/core": "^2.11.6",
-    "@react-docgen/cli": "^2.0.4",
+    "@react-docgen/cli": "^2.0.6",
     "@rollup/plugin-babel": "^6.0.4",
     "@testing-library/react": "^12.1.5",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
