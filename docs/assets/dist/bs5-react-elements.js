@@ -10,21 +10,13 @@
   var ReactDOM__default = /*#__PURE__*/_interopDefaultLegacy(ReactDOM);
 
   function _extends() {
-    _extends = Object.assign || function (target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i];
-
-        for (var key in source) {
-          if (Object.prototype.hasOwnProperty.call(source, key)) {
-            target[key] = source[key];
-          }
-        }
+    return _extends = Object.assign ? Object.assign.bind() : function (n) {
+      for (var e = 1; e < arguments.length; e++) {
+        var t = arguments[e];
+        for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
       }
-
-      return target;
-    };
-
-    return _extends.apply(this, arguments);
+      return n;
+    }, _extends.apply(null, arguments);
   }
 
   /**
@@ -36,16 +28,13 @@
    * @param {Object} domRef A ref pointing to the dom element of the component
    * @param {Map} events Mapping of bootstrap event names and function handlers
    */
-
   function useBootstrap(Component, config, componentRef, domRef, events) {
     const initialConfig = React.useRef(config);
     React.useEffect(() => {
       const component = Component.getInstance(domRef.current) || new Component(domRef.current, initialConfig.current);
-
       if (componentRef) {
         componentRef.current = component;
       }
-
       return () => component.dispose();
     }, [Component, componentRef, domRef]);
     React.useEffect(() => {
@@ -62,9 +51,8 @@
   }
 
   /**
-   * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/alerts/">Bootstrap alert component.</a>
+   * Wrapper for the <a href="https://getbootstrap.com/docs/5.3/components/alerts/">Bootstrap alert component.</a>
    */
-
   function AlertComponent(_ref) {
     let {
       onClosed,
@@ -82,13 +70,11 @@
       ref: componentElement
     }, props), children);
   }
-
   AlertComponent.displayName = 'Alert';
 
   /**
-   * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/carousel/">Bootstrap carousel component.</a>
+   * Wrapper for the <a href="https://getbootstrap.com/docs/5.3/components/carousel/">Bootstrap carousel component.</a>
    */
-
   function CarouselComponent(_ref) {
     let {
       onSlid,
@@ -107,13 +93,11 @@
       ref: componentElement
     }, props), children);
   }
-
   CarouselComponent.displayName = 'Carousel';
 
   /**
-   * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/collapse/">Bootstrap collapse component.</a>
+   * Wrapper for the <a href="https://getbootstrap.com/docs/5.3/components/collapse/">Bootstrap collapse component.</a>
    */
-
   function CollapseComponent(_ref) {
     let {
       onShown,
@@ -134,13 +118,11 @@
       ref: componentElement
     }, props), children);
   }
-
   CollapseComponent.displayName = 'Collapse';
 
   /**
-   * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/dropdowns/">Bootstrap dropdown component.</a>
+   * Wrapper for the <a href="https://getbootstrap.com/docs/5.3/components/dropdowns/">Bootstrap dropdown component.</a>
    */
-
   function DropdownComponent(_ref) {
     let {
       onShown,
@@ -162,16 +144,14 @@
       ref: componentElement
     }, props), children);
   }
-
   DropdownComponent.defaultProps = {
     as: 'button'
   };
   DropdownComponent.displayName = 'Dropdown';
 
   /**
-   * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/modal/">Bootstrap modal component.</a>
+   * Wrapper for the <a href="https://getbootstrap.com/docs/5.3/components/modal/">Bootstrap modal component.</a>
    */
-
   function ModalComponent(_ref) {
     let {
       onShown,
@@ -193,13 +173,11 @@
       ref: componentElement
     }, props), children);
   }
-
   ModalComponent.displayName = 'Modal';
 
   /**
-   * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/offcanvas/">Bootstrap offcanvas component.</a>
+   * Wrapper for the <a href="https://getbootstrap.com/docs/5.3/components/offcanvas/">Bootstrap offcanvas component.</a>
    */
-
   function OffcanvasComponent(_ref) {
     let {
       onShown,
@@ -220,13 +198,11 @@
       ref: componentElement
     }, props), children);
   }
-
   OffcanvasComponent.displayName = 'Offcanvas';
 
   /**
-   * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/popovers/">Bootstrap popover component.</a>
+   * Wrapper for the <a href="https://getbootstrap.com/docs/5.3/components/popovers/">Bootstrap popover component.</a>
    */
-
   function PopoverComponent(_ref) {
     let {
       onShown,
@@ -247,24 +223,19 @@
     const wrappedOnInserted = React.useCallback(event => {
       const tipId = componentElement.current.getAttribute('aria-describedby');
       const tip = document.getElementById(tipId);
-
       if (renderTitle) {
         tip.querySelector('.popover-header').innerHTML = '';
       }
-
       if (renderContent) {
         tip.querySelector('.popover-body').innerHTML = '';
       }
-
       setTip(tip);
-
       if (onInserted) {
         onInserted(event);
       }
     }, [onInserted, renderTitle, renderContent]);
     const wrappedOnHide = React.useCallback(event => {
       setTip(null);
-
       if (onHide) {
         onHide(event);
       }
@@ -272,39 +243,31 @@
     const events = React.useMemo(() => {
       return new Map([['shown.bs.popover', onShown], ['show.bs.popover', onShow], ['hidden.bs.popover', onHidden], ['hide.bs.popover', wrappedOnHide], ['inserted.bs.popover', wrappedOnInserted]]);
     }, [onShown, onShow, onHidden, wrappedOnHide, wrappedOnInserted]);
-
     if (!config) {
       config = {};
     }
-
     if ((renderTitle || renderContent) && config.animation !== false) {
       config.animation = false;
     }
-
     useBootstrap(bootstrap.Popover, config, component, componentElement, events);
-
     if (renderTitle) {
       props.title = ' ';
     }
-
     if (renderContent) {
       props['data-bs-content'] = ' ';
     }
-
     return /*#__PURE__*/React__default["default"].createElement(ElementType, _extends({
       ref: componentElement
     }, props), children, tip && renderTitle && /*#__PURE__*/ReactDOM__default["default"].createPortal(renderTitle(bootstrap.Popover.getInstance(componentElement.current)), tip.querySelector('.popover-header')), tip && renderContent && /*#__PURE__*/ReactDOM__default["default"].createPortal(renderContent(bootstrap.Popover.getInstance(componentElement.current)), tip.querySelector('.popover-body')));
   }
-
   PopoverComponent.defaultProps = {
     as: 'span'
   };
   PopoverComponent.displayName = 'Popover';
 
   /**
-   * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/navs-tabs/">Bootstrap tab component.</a>
+   * Wrapper for the <a href="https://getbootstrap.com/docs/5.3/components/navs-tabs/">Bootstrap tab component.</a>
    */
-
   function TabComponent(_ref) {
     let {
       onShown,
@@ -325,16 +288,14 @@
       ref: componentElement
     }, props), children);
   }
-
   TabComponent.defaultProps = {
     as: 'button'
   };
   TabComponent.displayName = 'Tab';
 
   /**
-   * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/toasts/">Bootstrap toast component.</a>
+   * Wrapper for the <a href="https://getbootstrap.com/docs/5.3/components/toasts/">Bootstrap toast component.</a>
    */
-
   function ToastComponent(_ref) {
     let {
       onShown,
@@ -355,13 +316,11 @@
       ref: componentElement
     }, props), children);
   }
-
   ToastComponent.displayName = 'Toast';
 
   /**
-   * Wrapper for the <a href="https://getbootstrap.com/docs/5.1/components/tooltips/">Bootstrap tooltip component.</a>
+   * Wrapper for the <a href="https://getbootstrap.com/docs/5.3/components/tooltips/">Bootstrap tooltip component.</a>
    */
-
   function TooltipComponent(_ref) {
     let {
       onShown,
@@ -382,20 +341,16 @@
       const tipId = componentElement.current.getAttribute('aria-describedby');
       const tip = document.getElementById(tipId);
       const inner = tip.querySelector('.tooltip-inner');
-
       if (renderTitle) {
         inner.innerHTML = '';
       }
-
       setTip(inner);
-
       if (onInserted) {
         onInserted(event);
       }
     }, [onInserted, renderTitle]);
     const wrappedOnHide = React.useCallback(event => {
       setTip(null);
-
       if (onHide) {
         onHide(event);
       }
@@ -403,26 +358,20 @@
     const events = React.useMemo(() => {
       return new Map([['shown.bs.tooltip', onShown], ['show.bs.tooltip', onShow], ['hidden.bs.tooltip', onHidden], ['hide.bs.tooltip', wrappedOnHide], ['inserted.bs.tooltip', wrappedOnInserted]]);
     }, [onShown, onShow, onHidden, wrappedOnHide, wrappedOnInserted]);
-
     if (!config) {
       config = {};
     }
-
     if (renderTitle && config.animation !== false) {
       config.animation = false;
     }
-
     useBootstrap(bootstrap.Tooltip, config, component, componentElement, events);
-
     if (renderTitle) {
       props.title = ' ';
     }
-
     return /*#__PURE__*/React__default["default"].createElement(ElementType, _extends({
       ref: componentElement
     }, props), children, tip && renderTitle && /*#__PURE__*/ReactDOM__default["default"].createPortal(renderTitle(bootstrap.Tooltip.getInstance(componentElement.current)), tip));
   }
-
   TooltipComponent.defaultProps = {
     as: 'span'
   };
