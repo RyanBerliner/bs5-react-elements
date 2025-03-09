@@ -12,7 +12,6 @@ jobs:
     strategy:
       matrix:
         bs_version: ['5.0', '5.1', '5.2', 'latest']
-        react_version: ['17', '18', 'latest'] # react, react-dom
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -23,5 +22,4 @@ jobs:
       - name: Test
         env:
           BS_VERSION: ${{ matrix.bs_version }}
-          REACT_VERSION: ${{ matrix.react_version }}
         run: npm run test
