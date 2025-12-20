@@ -16,7 +16,7 @@ function TooltipComponent({
   component,
   config,
   children,
-  as: ElementType,
+  as: ElementType = 'span',
   renderTitle,
   ...props
 }) {
@@ -136,10 +136,6 @@ TooltipComponent.propTypes = {
    * @since 2.0.0
    */
   renderTitle: PropTypes.func,
-};
-
-TooltipComponent.defaultProps = {
-  as: 'span',
 };
 
 TooltipComponent.displayName = 'Tooltip';

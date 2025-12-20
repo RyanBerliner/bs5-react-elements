@@ -16,7 +16,7 @@ function PopoverComponent({
   component,
   config,
   children,
-  as: ElementType,
+  as: ElementType = 'span',
   renderTitle,
   renderContent,
   ...props
@@ -153,10 +153,6 @@ PopoverComponent.propTypes = {
    * @since 2.0.0
    */
   renderContent: PropTypes.func,
-};
-
-PopoverComponent.defaultProps = {
-  as: 'span',
 };
 
 PopoverComponent.displayName = 'Popover';

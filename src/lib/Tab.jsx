@@ -13,7 +13,7 @@ function TabComponent({
   onHide,
   component,
   children,
-  as: ElementType,
+  as: ElementType = 'button',
   ...props
 }) {
   const componentElement = useRef();
@@ -75,10 +75,6 @@ TabComponent.propTypes = {
    * @since 0.2.0
    */
   as: PropTypes.elementType,
-};
-
-TabComponent.defaultProps = {
-  as: 'button',
 };
 
 TabComponent.displayName = 'Tab';

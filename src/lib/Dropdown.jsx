@@ -14,7 +14,7 @@ function DropdownComponent({
   component,
   config,
   children,
-  as: ElementType,
+  as: ElementType = 'button',
   ...props
 }) {
   const componentElement = useRef();
@@ -81,10 +81,6 @@ DropdownComponent.propTypes = {
    * @since 0.2.0
    */
   as: PropTypes.elementType,
-};
-
-DropdownComponent.defaultProps = {
-  as: 'button',
 };
 
 DropdownComponent.displayName = 'Dropdown';
