@@ -45,7 +45,7 @@
     "@popperjs/core": "^2.11.6",
     "@react-docgen/cli": "^3.0.4",
     "@rollup/plugin-babel": "^6.1.0",
-    "@testing-library/react": "^16.3.0",
+    "@testing-library/react": "^16.3.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "bootstrap": "^5.3.8",
     "bootstrap5-0": "npm:bootstrap@5.0",
