@@ -3,7 +3,9 @@ updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+      day: "friday"
+      time: 21:00
     open-pull-requests-limit: 10
     labels:
       - "dependencies"
@@ -11,3 +13,5 @@ updates:
       - "ryanberliner"
     target-branch: "master"
     versioning-strategy: increase
+    cooldown:
+      default-days: 30
